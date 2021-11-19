@@ -15,8 +15,8 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources
 1) Clone this repo
    ```shell
-   git clone git@github.com:wings-software/harness-on-prem.git
-   cd harness-on-prem/docker-compose/
+   git clone git@github.com:wings-software/harness-cd-community.git
+   cd harness-cd-community/docker-compose/harness
    ```
 1) Set the `PUBLIC_IP` environment variable, this is the IP address of your machine  
    Example,
