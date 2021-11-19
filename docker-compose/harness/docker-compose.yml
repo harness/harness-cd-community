@@ -1,0 +1,222 @@
+version: '3.7'
+
+services:
+
+  ng-ui:
+    image: harness/nextgenui-signed:0.276.4
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    environment:
+      - API_URL=http://${PUBLIC_IP:?err}
+      - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
+    expose:
+      - '8080'
+    healthcheck:
+      test: "curl -s http://localhost:8080/health"
+    networks:
+      harness-network:
+
+  ng-auth-ui:
+    image: harness/ng-auth-ui-signed:0.29.0
+    environment:
+      - DEPLOYMENT_TYPE=COMMUNITY
+      - API_URL=http://${PUBLIC_IP:?err}
+    expose:
+      - '8080'
+    healthcheck:
+      test: "curl -s http://localhost:8080/health"
+    networks:
+      harness-network:
+
+  manager:
+    image: harness/manager-signed:72809
+    deploy:
+      resources:
+        limits:
+          memory: 896M
+    depends_on:
+      - mongo
+      - redis
+    env_file:
+      - environment/manager.env
+    environment:
+      - API_URL=http://${PUBLIC_IP:?err}
+      - DELEGATE_GRPC_TARGET=${PUBLIC_IP:?err}:9879
+      - LOG_STREAMING_SERVICE_BASEURL=http://${PUBLIC_IP:?err}/log-service/
+    expose:
+      - '9090'
+      - '9879'
+    healthcheck:
+      test: "wget -q -O - http://localhost:9090/api/health"
+      start_period: 5m
+    networks:
+      harness-network:
+
+  ng-manager:
+    image: harness/ng-manager-signed:72809
+    deploy:
+      resources:
+        limits:
+          memory: 896M
+    depends_on:
+      - mongo
+      - pipeline-service
+      - redis
+    env_file: environment/ng-manager.env
+    expose:
+      - '7090'
+    healthcheck:
+      test: "wget -q -O - http://localhost:7090/health"
+      start_period: 5m
+    networks:
+      harness-network:
+
+  pipeline-service:
+    image: harness/pipeline-service-signed:72809
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+    depends_on:
+      - platform-service
+      - log-service
+      - mongo
+      - redis
+    env_file: environment/pipeline-service.env
+    expose:
+      - '12001'
+      - '12011'
+    healthcheck:
+      test: "wget -q -O - http://localhost:12001/api/health"
+      start_period: 5m
+    networks:
+      harness-network:
+
+  platform-service:
+    image: harness/platform-service-signed:72809
+    deploy:
+      resources:
+        limits:
+          memory: 384m
+    depends_on:
+      - mongo
+      - redis
+    env_file: environment/platform-service.env
+    expose:
+      - '9005'
+    healthcheck:
+      test: "wget -q -O - http://localhost:9005/api/health"
+      start_period: 5m
+    networks:
+      harness-network:
+    volumes:
+      - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
+
+  log-service:
+    image: harness/log-service-signed:release-15
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - LOG_SERVICE_DISABLE_AUTH=true
+    expose:
+      - '8079'
+    healthcheck:
+      test: "wget -q -O - http://localhost:8079/healthz"
+    networks:
+      harness-network:
+
+  scm:
+    image: harness/ci-scm-signed:release-25
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    expose:
+      - '8091'
+    healthcheck:
+      test: "/grpc_health_probe -addr=:8091"
+    networks:
+      harness-network:
+
+  delegate-proxy:
+    image: harness/delegate-proxy-signed:72809
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    expose:
+      - '8080'
+    healthcheck:
+      test: "curl -s http://localhost:8080/health"
+    networks:
+      harness-network:
+
+  proxy:
+    image: harness/nginx:1.21.4
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+    expose:
+      - '80'
+    depends_on:
+      - ng-ui
+      - manager
+      - ng-manager
+      - pipeline-service
+      - platform-service
+      - delegate-proxy
+    healthcheck:
+      test: "curl -s http://localhost:80/health"
+    networks:
+      harness-network:
+    ports:
+      - '80:80'
+      - '9879:9879'
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./scripts/wait-for-it.sh:/bin/wait-for-it.sh
+
+  redis:
+    image: harness/redis:6.2.5-alpine
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    expose:
+      - '6379'
+    healthcheck:
+      test: "redis-cli ping"
+    networks:
+      harness-network:
+
+  mongo:
+    image: harness/mongo:4.2.8
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+    command: -f /etc/mongod.conf
+    healthcheck:
+      test: "mongo --eval 'db.runCommand(\"ping\").ok' --quiet"
+    networks:
+      harness-network:
+    volumes:
+      - mongo_data:/data/db
+      - ./config/mongo/mongod.conf:/etc/mongod.conf
+
+networks:
+  harness-network:
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+
+volumes:
+  mongo_data:

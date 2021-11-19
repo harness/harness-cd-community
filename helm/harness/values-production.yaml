@@ -1,0 +1,11 @@
+manager:
+  memory: 1024
+
+ng_manager:
+  memory: 1024
+
+pms:
+  memory: 1024
+
+platform:
+  memory: 512

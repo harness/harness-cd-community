@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: log-service
+spec:
+  ports:
+  - name: log-service
+    port: 8079
+  selector:
+    app: log-service
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-service
+  labels:
+    app: log-service
+spec:
+  selector:
+    matchLabels:
+      app: log-service
+  template:
+    metadata:
+      labels:
+        app: log-service
+    spec:
+      serviceAccountName: harness-default
+      containers:
+      - name: log-service
+        image:  harness/log-service-signed:{{ .Values.versions.log_service }}
+        env:
+          - name: LOG_SERVICE_DISABLE_AUTH
+            value: "true"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http-log-svc
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http-log-svc
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        securityContext:
+          runAsUser: 65534
+          runAsNonRoot: true
+        ports:
+        - name: http-log-svc
+          containerPort: 8079
+          protocol: "TCP"    

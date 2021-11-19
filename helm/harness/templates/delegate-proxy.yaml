@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delegate-proxy
+spec:
+  selector:
+    matchLabels:
+      app: delegate-proxy
+  template:
+    metadata:
+      labels:
+        app: delegate-proxy
+    spec:
+      serviceAccountName: harness-default
+      securityContext:
+        runAsUser: 101
+      containers:
+        - image: harness/delegate-proxy-signed:{{ .Values.versions.manager }}
+          imagePullPolicy: IfNotPresent
+          name: delegate-proxy
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: delegate-proxy
+spec:
+  selector:
+    app: delegate-proxy
+  ports:
+    - name: http
+      port: 8080

@@ -1,0 +1,140 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pipeline-service
+data:
+  ADVISE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  AUTH_ENABLED: 'true'
+  BARRIER_ITERATOR_THREAD_POOL_SIZE: '2'
+  CACHE_BACKEND: REDIS
+  CACHE_CONFIG_REDIS_URL: redis://redis:6379
+  CI_MANAGER_AUTHORITY: default-authority.harness.io
+  CI_MANAGER_BASE_URL: http://proxy/ci/
+  CI_MANAGER_TARGET: ci-manager:9979
+  CREATE_PLAN_EVENT_CONSUMER_THREAD_COUNT: '1'
+  DEPLOY_MODE: KUBERNETES_ONPREM
+  DEPLOY_VERSION: COMMUNITY
+  DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
+  ENABLE_AUDIT: 'false'
+  ENABLE_SERIALGC: 'true'
+  EVENTS_FRAMEWORK_NETTY_THREADS: '2'
+  EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
+  FACILITATE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  GRAPH_UPDATE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  GRPC_SERVER_PORT: '12011'
+  INTERRUPT_CONSUMER_THREAD_COUNT: '1'
+  INTERRUPT_MONITOR_ITERATOR_THREAD_POOL_SIZE: '2'
+  JAVA_ADVANCED_FLAGS: -XX:-TieredCompilation
+  LOGGING_LEVEL: WARN
+  LOG_STREAMING_SERVICE_BASEURL: http://proxy/log-service/
+  MANAGER_AUTHORITY: default-authority.harness.io
+  MANAGER_BASE_URL: http://proxy/api/
+  MANAGER_CLIENT_BASEURL: http://proxy/api/
+  MANAGER_TARGET: manager:9879
+  MEMORY: '{{ .Values.pms.memory }}m'
+  MOCK_ACCESS_CONTROL_SERVICE: 'true'
+  NG_MANAGER_AUTHORITY: default-authority.harness.io
+  NG_MANAGER_BASE_URL: http://proxy/ng/api/
+  NG_MANAGER_GITSYNC_AUTHORITY: default-authority.harness.io
+  NG_MANAGER_GITSYNC_TARGET: ng-manager:13002
+  NG_MANAGER_TARGET: ng-manager:9979
+  NODE_START_EVENT_CONSUMER_THREAD_COUNT: '1'
+  NOTIFICATION_BASE_URL: http://proxy/notifications/api/
+  ORCHESTRATION_EVENT_CONSUMER_THREAD_COUNT: '1'
+  PARTIAL_PLAN_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  PIPELINE_SERVICE_BASE_URL: http://proxy/ng/#
+  PLAN_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '1'
+  PMS_API_BASE_URL: http://proxy/pipeline/api/
+  PMS_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '1'
+  PROGRESS_EVENT_CONSUMER_THREAD_COUNT: '1'
+  REDIS_NETTY_THREADS: '1'
+  RESOURCE_RESTRAINT_ITERATOR_THREAD_POOL_SIZE: '2'
+  RESUME_EVENT_CONSUMER_THREAD_COUNT: '1'
+  SCHEDULED_TRIGGER_ITERATOR_THREAD_POOL_SIZE: '2'
+  SCM_SERVICE_URI: scm:8091
+  SDK_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  TIMEOUT_ENGINE_ITERATOR_THREAD_POOL_SIZE: '2'
+  USE_REDIS_FOR_INTERRUPTS: 'true'
+  USE_REDIS_FOR_ORCHESTRATION_EVENTS: 'true'
+  USE_REDIS_FOR_SDK_RESPONSE_EVENTS: 'true'
+  WEBHOOK_ITERATOR_THREAD_POOL_SIZE: '2'
+
+---
+
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: pipeline-service
+stringData:
+  MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/pms-harness?authSource=admin'
+  NOTIFICATION_MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/notifications?authSource=admin'
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pipeline-service
+spec:
+  ports:
+  - name: pms-grpc
+    port: 12011
+  - name: pms-http
+    port: 12001
+  selector:
+    app: pipeline-service
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline-service
+  labels:
+    app: pipeline-service
+spec:
+  selector:
+    matchLabels:
+      app: pipeline-service
+  template:
+    metadata:
+      labels:
+        app: pipeline-service
+    spec:
+      serviceAccountName: harness-default
+      containers:
+      - name: pipeline-service
+        image: harness/pipeline-service-signed:{{ .Values.versions.manager }}
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 65534
+          runAsNonRoot: true
+        ports:
+          - name: pms-grpc
+            containerPort: 12011
+            protocol: "TCP"
+          - name: pms-http
+            containerPort: 12001
+            protocol: "TCP"
+        envFrom:
+        - configMapRef:
+            name: pipeline-service
+        - secretRef:
+            name: pipeline-service
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 12001
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          periodSeconds: 5
+          failureThreshold: 8
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 12001
+          initialDelaySeconds: 40
+          timeoutSeconds: 5
+          periodSeconds: 10
+          failureThreshold: 20

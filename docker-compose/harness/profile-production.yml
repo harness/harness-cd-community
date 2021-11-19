@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+
+  manager:
+    environment:
+      - MEMORY=1024
+
+  ng-manager:
+    environment:
+      - MEMORY=1024m
+
+  pipeline-service:
+    environment:
+      - MEMORY=1024m
+
+  platform-service:
+    environment:
+      - MEMORY=512m
