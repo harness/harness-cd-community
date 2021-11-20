@@ -6,12 +6,12 @@ This page contains the instructions necessary to run Harness CE using Docker Com
 
 ## Hardware requirements
 * 4 CPUs or more
-* 12GB of free memory
+* 4GB of free memory
 * 20GB of free disk space
 * Internet connection
 
 ## Installing Harness
-1) Increase Docker Desktop memory to 8GB and CPU to 4  
+1) Increase Docker Desktop memory to 4GB and CPU to 4  
    For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources
 1) Clone this repo
    ```shell

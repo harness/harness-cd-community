@@ -7,7 +7,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 32m
     environment:
       - API_URL=http://${PUBLIC_IP:?err}
       - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
@@ -20,6 +20,10 @@ services:
 
   ng-auth-ui:
     image: harness/ng-auth-ui-signed:0.29.0
+    deploy:
+      resources:
+        limits:
+          memory: 32m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
       - API_URL=http://${PUBLIC_IP:?err}
@@ -35,7 +39,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 896M
+          memory: 800m
     depends_on:
       - mongo
       - redis
@@ -59,7 +63,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 896M
+          memory: 800m
     depends_on:
       - mongo
       - pipeline-service
@@ -78,7 +82,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 768M
+          memory: 684m
     depends_on:
       - platform-service
       - log-service
@@ -99,7 +103,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 384m
+          memory: 256m
     depends_on:
       - mongo
       - redis
@@ -119,7 +123,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 32m
     depends_on:
       - mongo
       - redis
@@ -137,7 +141,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 32m
     expose:
       - '8091'
     healthcheck:
@@ -150,7 +154,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 32m
     expose:
       - '8080'
     healthcheck:
@@ -163,7 +167,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32M
+          memory: 16m
     expose:
       - '80'
     depends_on:
@@ -189,7 +193,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 64M
+          memory: 96m
     expose:
       - '6379'
     healthcheck:
@@ -202,8 +206,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 384M
-    command: -f /etc/mongod.conf
+          memory: 256m
+    command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
     healthcheck:
       test: "mongo --eval 'db.runCommand(\"ping\").ok' --quiet"
     networks:
