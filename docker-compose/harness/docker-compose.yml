@@ -137,11 +137,11 @@ services:
     networks:
       harness-network:
     ports:
-      # - '8849:8849'
+      - '8849:8849'
       - '8001:8001'
     volumes:
       - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
-      # - /Users/ankitsinghal/jprofiler12:/opt/harness/jprofiler12
+      - ~/jprofiler12:/opt/harness/jprofiler12
 
   log-service:
     image: harness/log-service-signed:release-15
