@@ -41,7 +41,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 0.5
+          cpus: 0.45
           memory: 800m
     depends_on:
       - mongo
@@ -71,7 +71,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 0.45
+          cpus: 0.4
           memory: 800m
     depends_on:
       - mongo
@@ -236,7 +236,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 0.35
+          cpus: 0.45
           memory: 256m
     command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
     healthcheck:
