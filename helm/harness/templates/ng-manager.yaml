@@ -40,6 +40,8 @@ data:
   SHOULD_CONFIGURE_WITH_PMS: 'true'
   USE_REDIS_FOR_SDK_RESPONSE_EVENTS: 'true'
   WEBHOOK_EVENT_PROCESSING_SERVICE_THREAD_SIZE: '2'
+  SEGMENT_URL: https://stats.drone.ci/api/v1/
+  SEGMENT_ENABLED: 'true'
 
 ---
 
