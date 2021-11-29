@@ -38,7 +38,7 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    echo "http://${PUBLIC_IP}/#/signup"
    ```
 1) Open the printed link and complete the signup form
-1) Follow the [documentation](https://docs.harness.io/category/3err8eu6x3-account) for using Harness
+1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments 
