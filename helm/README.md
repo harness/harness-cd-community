@@ -16,7 +16,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
 ## Starting Harness
 1) Start by cloning this repo
    ```shell
-   git clone git@github.com:wings-software/harness-cd-community.git
+   git clone git@github.com:harness/harness-cd-community.git
    cd harness-cd-community/helm
    ```
 1) Start minikube
