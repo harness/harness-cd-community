@@ -35,7 +35,7 @@ data:
   CAPSULE_JAR: rest-capsule.jar
   CRONS_THREAD_COUNT: '2'
   DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '2'
-  DELEGATE_DOCKER_IMAGE: harness/delegate:latest
+  DELEGATE_DOCKER_IMAGE: harness/delegate:ubi-beta
   DELEGATE_GRPC_AUTHORITY: default-authority.harness.io
   DELEGATE_GRPC_TARGET: {{ .Values.public_ip }}:9879
   DELEGATE_METADATA_URL: http://proxy/storage/wingsdelegates/delegateprod.txt
