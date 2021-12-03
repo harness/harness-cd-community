@@ -16,7 +16,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
 ## Starting Harness
 1) Start by cloning this repo
    ```shell
-   git clone git@github.com:wings-software/harness-cd-community.git
+   git clone git@github.com:harness/harness-cd-community.git
    cd harness-cd-community/helm
    ```
 1) Start minikube
@@ -32,7 +32,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
 1) Follow the notes printed by Helm to access the application
 1) Open the link which is displayed and complete the signup form
 1) You need to install a Harness delegate before you can run pipelines, see [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate)
-1) Follow the [documentation](https://docs.harness.io/category/3err8eu6x3-account) for using Harness
+1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments

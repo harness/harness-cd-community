@@ -79,6 +79,8 @@ data:
   VERSION: 1.0.{{ .Values.versions.manager }}
   WATCHER_METADATA_URL: http://proxy/storage/wingswatchers/watcherprod.txt
   WORKFLOW_EXECUTION_MONITOR_ITERATOR_THREAD_COUNT: '2'
+  SEGMENT_NG_URL: https://stats.drone.ci/api/v1/
+  SEGMENT_NG_ENABLED: 'true'
 ---
 
 apiVersion: v1

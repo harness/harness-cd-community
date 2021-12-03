@@ -15,7 +15,7 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources
 1) Clone this repo
    ```shell
-   git clone git@github.com:wings-software/harness-cd-community.git
+   git clone git@github.com:harness/harness-cd-community.git
    cd harness-cd-community/docker-compose/harness
    ```
 1) Set the `PUBLIC_IP` environment variable, this is the IP address of your machine  
@@ -38,7 +38,7 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    echo "http://${PUBLIC_IP}/#/signup"
    ```
 1) Open the printed link and complete the signup form
-1) Follow the [documentation](https://docs.harness.io/category/3err8eu6x3-account) for using Harness
+1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments 
