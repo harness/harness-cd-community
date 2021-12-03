@@ -7,7 +7,7 @@ versions:
   manager: 73012
   mongo: 4.2.8
   ng_auth_ui: 0.29.0
-  ng_ui: 0.278.9
+  ng_ui: 0.278.10
   nginx: 1.21.4
   redis: 6.2.5-alpine
   scm: release-25
