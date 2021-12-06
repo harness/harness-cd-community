@@ -9,7 +9,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
 
 ## Hardware requirements
 * 4 CPUs or more
-* 12GB of free memory
+* 4GB of free memory
 * 20GB of free disk space
 * Internet connection
 
@@ -21,7 +21,12 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
    ```
 1) Start minikube
    ```shell
-   minikube start --memory 8g --cpus 4
+   minikube start --memory 4g --cpus 4
+   ```
+1) Set the `PUBLIC_IP` configuration parameter, this is the IP address of your machine  
+   In values.yaml update the `public_ip` parameter, example,
+   ```shell
+   sed -i '' -e 's/public_ip:.*/public_ip: "192.168.1.1"/' harness/values.yaml
    ```
 1) Start Harness
    ```shell

@@ -1,7 +1,7 @@
 services:
 
   ng-ui:
-    image: harness/nextgenui-signed:0.278.9
+    image: harness/nextgenui-signed:0.278.11
     deploy:
       resources:
         limits:
@@ -33,7 +33,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:73012
+    image: harness/manager-signed:73013
     deploy:
       resources:
         limits:
