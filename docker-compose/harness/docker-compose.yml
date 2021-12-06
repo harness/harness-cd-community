@@ -111,12 +111,12 @@ services:
       test: "wget -q -O - http://localhost:12001/api/health"
       interval: 5s
       start_period: 1m
-    ports:
-      - '8849:8849'
+    # ports:
+    #   - '8849:8849'
     networks:
       harness-network:
-    volumes:
-      - ~/jprofiler12:/opt/harness/jprofiler12
+    # volumes:
+    #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   platform-service:
     image: harness/platform-service-signed:73100
