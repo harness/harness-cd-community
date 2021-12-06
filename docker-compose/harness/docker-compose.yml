@@ -5,7 +5,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 32m
     environment:
       - API_URL=http://${PUBLIC_IP:?err}
@@ -22,7 +21,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 32m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
@@ -39,7 +37,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: 0.45
           memory: 800m
     depends_on:
       - mongo
@@ -58,22 +55,19 @@ services:
       start_period: 1m
     # ports:
     #   - '8849:8849'
+    #   - '8001:8001'
     # volumes:
-    #   - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
     #   - ~/jprofiler12:/opt/harness/jprofiler12
     networks:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:73012
+    image: harness/ng-manager-signed:73100
     deploy:
       resources:
         limits:
-          # cpus: 0.4
           memory: 800m
     depends_on:
-      platform-service:
-        condition: service_healthy
       pipeline-service:
         condition: service_healthy
       mongo:
@@ -86,21 +80,19 @@ services:
     healthcheck:
       test: "wget -q -O - http://localhost:7090/health"
       start_period: 1m
-    ports:
-      - '8849:8849'
-      - '8001:8001'
+    # ports:
+    #   - '8849:8849'
+    #   - '8001:8001'
     # volumes:
-    #   - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
     #   - ~/jprofiler12:/opt/harness/jprofiler12
     networks:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:73012
+    image: harness/pipeline-service-signed:73100
     deploy:
       resources:
         limits:
-          # cpus: 0.4
           memory: 684m
     depends_on:
       platform-service:
@@ -124,15 +116,13 @@ services:
     networks:
       harness-network:
     # volumes:
-    #   - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
     #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   platform-service:
-    image: harness/platform-service-signed:73012
+    image: harness/platform-service-signed:73100
     deploy:
       resources:
         limits:
-          # cpus: 0.15
           memory: 256m
     depends_on:
       - mongo
@@ -150,7 +140,6 @@ services:
     #   - '8849:8849'
     #   - '8001:8001'
     # volumes:
-    #   - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
     #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   log-service:
@@ -158,7 +147,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 32m
     depends_on:
       - mongo
@@ -177,7 +165,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 32m
     expose:
       - '8091'
@@ -187,11 +174,10 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:73012
+    image: harness/delegate-proxy-signed:73100
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 32m
     expose:
       - '8080'
@@ -205,7 +191,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.0125'
           memory: 16m
     expose:
       - '80'
@@ -232,7 +217,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.025'
           memory: 96m
     expose:
       - '6379'
@@ -246,7 +230,6 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: 0.5
           memory: 256m
     command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
     healthcheck:
