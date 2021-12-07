@@ -13,7 +13,7 @@ versions:
   scm: release-25
 
 manager:
-  memory: 256
+  memory: 240
 
 ng_manager:
   memory: 256
@@ -22,4 +22,4 @@ pms:
   memory: 192
 
 platform:
-  memory: 80
+  memory: 72
