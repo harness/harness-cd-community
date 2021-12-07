@@ -23,8 +23,8 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
    ```shell
    minikube start --memory 4g --cpus 4
    ```
-1) Set the `PUBLIC_IP` configuration parameter, this is the IP address of your machine  
-   In values.yaml update the `public_ip` parameter, example,
+1) Set the `PUBLIC_IP` configuration parameter to the IP address of your machine  
+   Open values.yaml in your editor and update the `public_ip` parameter, or an example command to do the same is,
    ```shell
    sed -i '' -e 's/public_ip:.*/public_ip: "192.168.1.1"/' harness/values.yaml
    ```
