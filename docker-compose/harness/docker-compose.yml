@@ -1,5 +1,6 @@
-services:
+version: "3.7"
 
+services:
   ng-ui:
     image: harness/nextgenui-signed:0.278.11
     deploy:
@@ -38,9 +39,6 @@ services:
       resources:
         limits:
           memory: 800m
-    depends_on:
-      - mongo
-      - redis
     env_file:
       - environment/manager.env
     environment:
@@ -52,7 +50,7 @@ services:
       - '9879'
     healthcheck:
       test: "wget -q -O - http://localhost:9090/api/health"
-      start_period: 1m
+      start_period: 5m
     # ports:
     #   - '8849:8849'
     #   - '8001:8001'
@@ -67,19 +65,13 @@ services:
       resources:
         limits:
           memory: 800m
-    depends_on:
-      pipeline-service:
-        condition: service_healthy
-      mongo:
-        condition: service_started
-      redis:
-        condition: service_started
+    restart: on-failure
     env_file: environment/ng-manager.env
     expose:
       - '7090'
     healthcheck:
       test: "wget -q -O - http://localhost:7090/health"
-      start_period: 1m
+      start_period: 5m
     # ports:
     #   - '8849:8849'
     #   - '8001:8001'
@@ -94,23 +86,13 @@ services:
       resources:
         limits:
           memory: 684m
-    depends_on:
-      platform-service:
-        condition: service_healthy
-      log-service:
-        condition: service_started
-      mongo:
-        condition: service_started
-      redis:
-        condition: service_started
     env_file: environment/pipeline-service.env
     expose:
       - '12001'
       - '12011'
     healthcheck:
       test: "wget -q -O - http://localhost:12001/api/health"
-      interval: 5s
-      start_period: 1m
+      start_period: 5m
     # ports:
     #   - '8849:8849'
     networks:
@@ -124,16 +106,12 @@ services:
       resources:
         limits:
           memory: 256m
-    depends_on:
-      - mongo
-      - redis
     env_file: environment/platform-service.env
     expose:
       - '9005'
     healthcheck:
       test: "wget -q -O - http://localhost:9005/api/health"
-      start_period: 1m
-      interval: 5s
+      start_period: 5m
     networks:
       harness-network:
     # ports:
@@ -148,9 +126,6 @@ services:
       resources:
         limits:
           memory: 32m
-    depends_on:
-      - mongo
-      - redis
     environment:
       - LOG_SERVICE_DISABLE_AUTH=true
     expose:
