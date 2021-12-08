@@ -51,6 +51,11 @@ services:
     healthcheck:
       test: "wget -q -O - http://localhost:9090/api/health"
       start_period: 5m
+    # ports:
+    #   - '8849:8849'
+    #   - '8001:8001'
+    # volumes:
+    #   - ~/jprofiler12:/opt/harness/jprofiler12
     networks:
       harness-network:
 
@@ -67,6 +72,11 @@ services:
     healthcheck:
       test: "wget -q -O - http://localhost:7090/health"
       start_period: 5m
+    # ports:
+    #   - '8849:8849'
+    #   - '8001:8001'
+    # volumes:
+    #   - ~/jprofiler12:/opt/harness/jprofiler12
     networks:
       harness-network:
 
@@ -83,8 +93,12 @@ services:
     healthcheck:
       test: "wget -q -O - http://localhost:12001/api/health"
       start_period: 5m
+    # ports:
+    #   - '8849:8849'
     networks:
       harness-network:
+    # volumes:
+    #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   platform-service:
     image: harness/platform-service-signed:73016
@@ -100,6 +114,11 @@ services:
       start_period: 5m
     networks:
       harness-network:
+    # ports:
+    #   - '8849:8849'
+    #   - '8001:8001'
+    # volumes:
+    #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   log-service:
     image: harness/log-service-signed:release-15
