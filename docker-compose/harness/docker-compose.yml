@@ -34,7 +34,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:73100
+    image: harness/manager-signed:73016
     deploy:
       resources:
         limits:
@@ -60,7 +60,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:73100
+    image: harness/ng-manager-signed:73016
     deploy:
       resources:
         limits:
@@ -81,7 +81,7 @@ services:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:73100
+    image: harness/pipeline-service-signed:73016
     deploy:
       resources:
         limits:
@@ -101,7 +101,7 @@ services:
     #   - ~/jprofiler12:/opt/harness/jprofiler12
 
   platform-service:
-    image: harness/platform-service-signed:73100
+    image: harness/platform-service-signed:73016
     deploy:
       resources:
         limits:
@@ -149,7 +149,7 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:73100
+    image: harness/delegate-proxy-signed:73016
     deploy:
       resources:
         limits:

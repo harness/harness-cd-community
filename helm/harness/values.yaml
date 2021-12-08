@@ -4,7 +4,7 @@ listen_port: "7143"
 versions:
   busybox: 1.33.1
   log_service: release-15
-  manager: 73013
+  manager: 73016
   mongo: 4.2.8
   ng_auth_ui: 0.29.0
   ng_ui: 0.278.11
@@ -13,7 +13,7 @@ versions:
   scm: release-25
 
 manager:
-  memory: 256
+  memory: 240
 
 ng_manager:
   memory: 256
@@ -22,4 +22,4 @@ pms:
   memory: 192
 
 platform:
-  memory: 80
+  memory: 72
