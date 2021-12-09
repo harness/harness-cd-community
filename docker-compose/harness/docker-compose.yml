@@ -74,7 +74,6 @@ services:
       start_period: 5m
     # ports:
     #   - '8849:8849'
-    #   - '8001:8001'
     # volumes:
     #   - ~/jprofiler12:/opt/harness/jprofiler12
     networks:
