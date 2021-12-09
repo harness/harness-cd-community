@@ -205,7 +205,7 @@ services:
       resources:
         limits:
           memory: 320m
-    command: --wiredTigerCacheSizeGB 0.15 -f /etc/mongod.conf
+    command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
     healthcheck:
       test: "mongo --eval 'db.runCommand(\"ping\").ok' --quiet"
     networks:
