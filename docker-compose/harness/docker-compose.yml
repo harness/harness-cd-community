@@ -6,7 +6,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 24m
     environment:
       - API_URL=http://${PUBLIC_IP:?err}
       - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
@@ -22,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 16m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
       - API_URL=http://${PUBLIC_IP:?err}
@@ -64,7 +64,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 800m
+          memory: 752m
     restart: on-failure
     env_file: environment/ng-manager.env
     expose:
@@ -105,7 +105,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256m
+          memory: 244m
     env_file: environment/platform-service.env
     expose:
       - '9005'
@@ -125,7 +125,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 44m
     environment:
       - LOG_SERVICE_DISABLE_AUTH=true
     expose:
@@ -140,7 +140,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 44m
     expose:
       - '8091'
     healthcheck:
@@ -205,8 +205,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256m
-    command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
+          memory: 320m
+    command: --wiredTigerCacheSizeGB 0.15 -f /etc/mongod.conf
     healthcheck:
       test: "mongo --eval 'db.runCommand(\"ping\").ok' --quiet"
     networks:
