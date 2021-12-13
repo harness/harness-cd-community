@@ -1,13 +1,12 @@
-version: '3.7'
+version: "3.7"
 
 services:
-
   ng-ui:
     image: harness/nextgenui-signed:0.279.8
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 24m
     environment:
       - API_URL=http://${PUBLIC_IP:?err}
       - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
@@ -23,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 16m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
       - API_URL=http://${PUBLIC_IP:?err}
@@ -40,9 +39,6 @@ services:
       resources:
         limits:
           memory: 800m
-    depends_on:
-      - mongo
-      - redis
     env_file:
       - environment/manager.env
     environment:
@@ -63,11 +59,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 800m
-    depends_on:
-      - mongo
-      - pipeline-service
-      - redis
+          memory: 752m
+    restart: on-failure
     env_file: environment/ng-manager.env
     expose:
       - '7090'
@@ -83,11 +76,6 @@ services:
       resources:
         limits:
           memory: 684m
-    depends_on:
-      - platform-service
-      - log-service
-      - mongo
-      - redis
     env_file: environment/pipeline-service.env
     expose:
       - '12001'
@@ -103,10 +91,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256m
-    depends_on:
-      - mongo
-      - redis
+          memory: 244m
     env_file: environment/platform-service.env
     expose:
       - '9005'
@@ -115,18 +100,13 @@ services:
       start_period: 5m
     networks:
       harness-network:
-    volumes:
-      - ./jmx_prometheus_javaagent:/opt/harness/jmx_prometheus_javaagent
 
   log-service:
     image: harness/log-service-signed:release-15
     deploy:
       resources:
         limits:
-          memory: 32m
-    depends_on:
-      - mongo
-      - redis
+          memory: 44m
     environment:
       - LOG_SERVICE_DISABLE_AUTH=true
     expose:
@@ -141,7 +121,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 44m
     expose:
       - '8091'
     healthcheck:
@@ -206,7 +186,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256m
+          memory: 320m
     command: --wiredTigerCacheSizeGB 0.125 -f /etc/mongod.conf
     healthcheck:
       test: "mongo --eval 'db.runCommand(\"ping\").ok' --quiet"
