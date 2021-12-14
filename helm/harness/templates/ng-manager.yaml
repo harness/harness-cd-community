@@ -10,6 +10,7 @@ data:
   CURRENT_GEN_UI_URL: http://proxy/#/
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
+  DISABLE_RESOURCE_VALIDATION: 'true'
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   ENABLE_DEFAULT_RESOURCE_GROUP_CREATION: 'true'
   ENABLE_SERIALGC: 'true'
@@ -100,6 +101,13 @@ spec:
         app: ng-manager
     spec:
       serviceAccountName: harness-default
+      initContainers:
+        - name: check-for-pms
+          image: harness/nginx:{{ .Values.versions.nginx }}
+          command: ['sh', '-c', "until curl -s http://pipeline-service:12001/api/health; do echo waiting for pipeline-service; sleep 2; done"]
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 101
       containers:
       - name: ng-manager
         image: harness/ng-manager-signed:{{ .Values.versions.manager }}
