@@ -18,24 +18,20 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    git clone git@github.com:harness/harness-cd-community.git
    cd harness-cd-community/docker-compose/harness
    ```
-1) Set the `PUBLIC_IP` environment variable, this is the IP address of your machine  
-   Example,
-   ```shell
-   export PUBLIC_IP="192.168.0.1"
-   ```
+1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running "production" docker then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
 1) Start harness
    ```shell
    docker-compose up -d
    ```
 1) Wait for startup to complete
    ```shell
-   docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 900
+   docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180
    ```
 
 ## Using Harness
 1) To get the link to your instance of Harness run
    ```shell
-   echo "http://${PUBLIC_IP}/#/signup"
+   echo "http://${HARNESS_HOST}/#/signup"
    ```
 1) Open the printed link and complete the signup form
 1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
@@ -67,6 +63,16 @@ docker-compose down -v
 2) Re-run docker compose
    ```shell
    docker compose up -d
+   ```
+
+## Advanced Configuration
+### How to deploy the Harness Delegate to a separate environment
+You simply need to set the `HARNESS_HOST` environment variable, see [Set hostname environment variable](#set-hostname-environment-variable) below.
+### Set hostname environment variable
+1) Set the `HARNESS_HOST` environment variable, this should be the IP address or hostname of the machine where you are deploying Harness. You cannot use `localhost`.  
+   Example,
+   ```shell
+   export HARNESS_HOST="192.168.0.1"
    ```
 
 ## Airgapped installation
