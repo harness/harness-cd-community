@@ -36,6 +36,8 @@ data:
   NG_MANAGER_UI_URL: http://proxy/ng/#/
   NG_VAULT_ITERATOR_THREAD_POOL_SIZE: '2'
   PMS_AUTHORITY: default-authority.harness.io
+  PMS_GITSYNC_AUTHORITY: default-authority.harness.io
+  PMS_GITSYNC_TARGET: pipeline-service:14002
   PMS_SDK_EXECUTION_POOL_CORE_SIZE: '1'
   PMS_SDK_EXECUTION_POOL_MAX_SIZE: '2'
   PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE: '1'

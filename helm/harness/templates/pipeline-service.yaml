@@ -84,6 +84,8 @@ spec:
     port: 12011
   - name: pms-http
     port: 12001
+  - name: pms-gitsync
+    port: 14002
   selector:
     app: pipeline-service
 
@@ -118,6 +120,9 @@ spec:
             protocol: "TCP"
           - name: pms-http
             containerPort: 12001
+            protocol: "TCP"
+          - name: pms-gitsync
+            containerPort: 14002
             protocol: "TCP"
         envFrom:
         - configMapRef:
