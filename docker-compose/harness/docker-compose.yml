@@ -6,7 +6,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 24m
+          memory: 16m
     environment:
       - API_URL=http://${PUBLIC_IP:?err}
       - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
@@ -22,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 16m
+          memory: 12m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
       - API_URL=http://${PUBLIC_IP:?err}
@@ -38,7 +38,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 800m
+          memory: 780m
     env_file:
       - environment/manager.env
     environment:
@@ -75,7 +75,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 684m
+          memory: 660m
     env_file: environment/pipeline-service.env
     expose:
       - '12001'
@@ -106,7 +106,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 44m
+          memory: 72m
     environment:
       - LOG_SERVICE_DISABLE_AUTH=true
     expose:
@@ -121,7 +121,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 44m
+          memory: 48m
     expose:
       - '8091'
     healthcheck:
@@ -134,7 +134,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 32m
+          memory: 24m
     expose:
       - '8080'
     healthcheck:
@@ -173,7 +173,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 96m
+          memory: 128m
     expose:
       - '6379'
     healthcheck:
