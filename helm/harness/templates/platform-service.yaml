@@ -9,6 +9,7 @@ data:
   COMMON_POOL_MAX_SIZE: '2'
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
+  DISABLE_RESOURCE_VALIDATION: 'true'
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   ENABLE_AUDIT_SERVICE: 'false'
   ENABLE_RESOURCE_GROUP: 'false'
@@ -78,6 +79,16 @@ spec:
         app: platform-service
     spec:
       serviceAccountName: harness-default
+      initContainers:
+        - name: check-for-mongo
+          image: harness/mongo:{{ .Values.versions.mongo }}
+          command: ['sh', '-c', "until mongo \"$(cat /config/MONGO_URI)\" --eval \"db.adminCommand('ping')\"; do echo waiting for mongodb; sleep 2; done"]
+          volumeMounts:
+            - name: mongo-config
+              mountPath: /config
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
       containers:
       - name: platform-service
         image: harness/platform-service-signed:{{ .Values.versions.manager }}
@@ -110,3 +121,10 @@ spec:
           timeoutSeconds: 10
           periodSeconds: 10
           failureThreshold: 20
+      volumes:
+        - name: mongo-config
+          secret:
+            secretName: platform-service
+            items:
+              - key: MONGO_URI
+                path: MONGO_URI

@@ -1,4 +1,4 @@
-public_ip: "192.168.0.1"
+public_ip: "192.168.1.11"
 listen_port: "7143"
 
 versions:
@@ -13,13 +13,13 @@ versions:
   scm: release-25
 
 manager:
-  memory: 240
+  memory: 232
 
 ng_manager:
-  memory: 256
+  memory: 232
 
 pms:
-  memory: 192
+  memory: 200
 
 platform:
-  memory: 72
+  memory: 60

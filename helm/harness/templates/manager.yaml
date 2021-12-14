@@ -37,7 +37,7 @@ data:
   COMMON_POOL_MAX_SIZE: '10'
   CRONS_THREAD_COUNT: '1'
   DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '2'
-  DELEGATE_DOCKER_IMAGE: harness/delegate:ubi-beta
+  DELEGATE_DOCKER_IMAGE: harness/delegate:latest
   DELEGATE_GRPC_AUTHORITY: default-authority.harness.io
   DELEGATE_GRPC_TARGET: {{ .Values.public_ip }}:9879
   DELEGATE_METADATA_URL: http://proxy/storage/wingsdelegates/delegateprod.txt
@@ -48,6 +48,7 @@ data:
   DEPLOYMENT_TIME_SERIES_EVENT_LISTENER_COUNT: '1'
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
+  DISABLE_RESOURCE_VALIDATION: 'true'
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   ENABLE_AUDIT: 'false'
   ENABLE_SERIALGC: 'true'
@@ -117,7 +118,7 @@ spec:
           image: harness/mongo:{{ .Values.versions.mongo }}
           command: ['sh', '-c', "until mongo \"$(cat /config/MONGO_URI)\" --eval \"db.adminCommand('ping')\"; do echo waiting for mongodb; sleep 2; done"]
           volumeMounts:
-            - name: manager-config
+            - name: mongo-config
               mountPath: /config
           securityContext:
             runAsNonRoot: true
@@ -158,7 +159,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
       volumes:
-        - name: manager-config
+        - name: mongo-config
           secret:
             secretName: manager-config
             items:
