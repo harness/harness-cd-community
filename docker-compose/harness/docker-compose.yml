@@ -8,7 +8,6 @@ services:
         limits:
           memory: 16m
     environment:
-      - API_URL=http://${PUBLIC_IP:?err}
       - HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER=true
     expose:
       - '8080'
@@ -25,7 +24,6 @@ services:
           memory: 12m
     environment:
       - DEPLOYMENT_TYPE=COMMUNITY
-      - API_URL=http://${PUBLIC_IP:?err}
     expose:
       - '8080'
     healthcheck:
@@ -42,9 +40,9 @@ services:
     env_file:
       - environment/manager.env
     environment:
-      - API_URL=http://${PUBLIC_IP:?err}
-      - DELEGATE_GRPC_TARGET=${PUBLIC_IP:?err}:9879
-      - LOG_STREAMING_SERVICE_BASEURL=http://${PUBLIC_IP:?err}/log-service/
+      - API_URL=http://${HARNESS_HOST:-host.docker.internal}
+      - DELEGATE_GRPC_TARGET=${HARNESS_HOST:-host.docker.internal}:9879
+      - LOG_STREAMING_SERVICE_BASEURL=http://${HARNESS_HOST:-host.docker.internal}/log-service/
     expose:
       - '9090'
       - '9879'
