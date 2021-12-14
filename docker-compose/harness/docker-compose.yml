@@ -78,6 +78,7 @@ services:
     expose:
       - '12001'
       - '12011'
+      - '14002'
     healthcheck:
       test: "wget -q -O - http://localhost:12001/api/health"
       start_period: 5m
