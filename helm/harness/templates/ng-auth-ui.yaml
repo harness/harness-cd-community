@@ -3,7 +3,6 @@ kind: ConfigMap
 metadata:
   name: ng-auth-ui
 data:
-  API_URL: http://{{ .Values.public_ip }}:{{ .Values.listen_port }}
   DEPLOYMENT_TYPE: COMMUNITY
 
 ---

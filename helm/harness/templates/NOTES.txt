@@ -4,7 +4,7 @@
         kubectl wait --namespace {{ .Release.Namespace }} --timeout 900s --selector app=ng-manager --for condition=Ready pods
 
    b. Forward port to allow access from outside the cluster
-        kubectl port-forward --namespace {{ .Release.Namespace }} --address {{ .Values.public_ip }} svc/proxy {{ .Values.listen_port }}:80 9879:9879
+        kubectl port-forward --namespace {{ .Release.Namespace }} --address {{ .Values.harness_host | default "localhost" }} svc/proxy {{ .Values.listen_port }}:80 9879:9879
 
    c. Open
-        http://{{ .Values.public_ip }}:{{ .Values.listen_port }}/#/signup
+        http://{{ .Values.harness_host | default "localhost" }}:{{ .Values.listen_port }}/#/signup

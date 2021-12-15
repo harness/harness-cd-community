@@ -1,4 +1,4 @@
-public_ip: "192.168.1.11"
+harness_host: ""
 listen_port: "7143"
 
 versions:

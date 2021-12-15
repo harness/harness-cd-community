@@ -26,7 +26,7 @@ metadata:
   name: manager-config
 data:
   ALLOWED_ORIGINS: http://proxy
-  API_URL: http://{{ .Values.public_ip }}:{{ .Values.listen_port }}
+  API_URL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}
   ARTIFACT_COLLECTION_ITERATOR_THREAD_COUNT: '2'
   ATMOSPHERE_BACKEND: REDIS
   BACKGROUND_SCHEDULER_CLUSTERED: 'true'
@@ -39,7 +39,7 @@ data:
   DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '2'
   DELEGATE_DOCKER_IMAGE: harness/delegate:latest
   DELEGATE_GRPC_AUTHORITY: default-authority.harness.io
-  DELEGATE_GRPC_TARGET: {{ .Values.public_ip }}:9879
+  DELEGATE_GRPC_TARGET: {{ .Values.harness_host | default "host.docker.internal" }}:9879
   DELEGATE_METADATA_URL: http://proxy/storage/wingsdelegates/delegateprod.txt
   DELEGATE_SERVICE_AUTHORITY: default-authority.harness.io
   DELEGATE_SERVICE_TARGET: manager:9879
@@ -65,7 +65,7 @@ data:
   LICENSE_INFO: trialLicense
   LOGGERS: org.reflections.Reflections=ERROR
   LOGGING_LEVEL: WARN
-  LOG_STREAMING_SERVICE_BASEURL: http://{{ .Values.public_ip }}:{{ .Values.listen_port }}/log-service/
+  LOG_STREAMING_SERVICE_BASEURL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}/log-service/
   LOG_STREAMING_SERVICE_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   MEMORY: '{{ .Values.manager.memory }}'
   NG_MANAGER_BASE_URL: http://proxy/ng/api/
