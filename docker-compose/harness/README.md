@@ -18,7 +18,7 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    git clone git@github.com:harness/harness-cd-community.git
    cd harness-cd-community/docker-compose/harness
    ```
-1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running "production" docker then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
+1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running on Linux or wish to run a production install then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
 1) Start harness
    ```shell
    docker-compose up -d
@@ -29,12 +29,10 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    ```
 
 ## Using Harness
-1) To get the link to your instance of Harness run
-   ```shell
-   echo "http://${HARNESS_HOST}/#/signup"
-   ```
-1) Open the printed link and complete the signup form
-1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
+1) Open http://localhost/#/signup
+1) Complete the signup form
+1) You need to install a Harness delegate before you can run pipelines, see [Install a Docker Delegate](https://ngdocs.harness.io/article/cya29w2b99-install-a-docker-delegate)
+1) For help with getting started, read the Harness [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts)
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments 

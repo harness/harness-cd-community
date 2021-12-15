@@ -23,11 +23,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
    ```shell
    minikube start --memory 4g --cpus 4
    ```
-1) Set the `PUBLIC_IP` configuration parameter to the IP address of your machine  
-   Open values.yaml in your editor and update the `public_ip` parameter, or an example command to do the same is,
-   ```shell
-   sed -i '' -e 's/public_ip:.*/public_ip: "192.168.1.1"/' harness/values.yaml
-   ```
+1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running on Linux or wish to run a production install then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
 1) Start Harness
    ```shell
    helm install harness ./harness --create-namespace --namespace harness
@@ -37,7 +33,7 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
 1) Follow the notes printed by Helm to access the application
 1) Open the link which is displayed and complete the signup form
 1) You need to install a Harness delegate before you can run pipelines, see [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate)
-1) Follow the [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts) for using Harness
+1) For help with getting started, read the Harness [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts)
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments
@@ -52,3 +48,10 @@ helm install -f harness/values-production.yaml harness ./harness --create-namesp
 ```shell
 helm uninstall harness
 ```
+
+## Advanced Configuration
+### How to deploy the Harness Delegate to a separate environment
+You simply need to set the `harness_host` configuration parameter, see [Set hostname configuration parameter](#set-hostname-configuration-parameter) below.
+### Set hostname configuration parameter
+1) Set the `harness_host` configuration parameter, this should be the IP address or hostname of the machine where you are deploying Harness. You **cannot** use `localhost`.  
+   Open values.yaml in your editor and update the `harness_host` parameter.
