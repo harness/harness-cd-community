@@ -17,7 +17,7 @@ services:
       harness-network:
 
   ng-auth-ui:
-    image: harness/ng-auth-ui-signed:0.29.0
+    image: harness/ng-auth-ui-signed:0.30.0
     deploy:
       resources:
         limits:
@@ -116,7 +116,7 @@ services:
       harness-network:
 
   scm:
-    image: harness/ci-scm-signed:release-25
+    image: harness/ci-scm-signed:release-27
     deploy:
       resources:
         limits:
