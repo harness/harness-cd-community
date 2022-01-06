@@ -15,7 +15,7 @@ This page contains the instructions necessary to run Harness CE using Docker Com
    For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources
 1) Clone this repo
    ```shell
-   git clone git@github.com:harness/harness-cd-community.git
+   git clone https://github.com/harness/harness-cd-community.git
    cd harness-cd-community/docker-compose/harness
    ```
 1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running on Linux or wish to run a production install then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
