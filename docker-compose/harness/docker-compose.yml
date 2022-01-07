@@ -32,7 +32,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:73225
+    image: harness/manager-signed:73228
     deploy:
       resources:
         limits:
@@ -53,7 +53,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:73225
+    image: harness/ng-manager-signed:73228
     deploy:
       resources:
         limits:
@@ -69,7 +69,7 @@ services:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:73225
+    image: harness/pipeline-service-signed:73228
     deploy:
       resources:
         limits:
@@ -86,7 +86,7 @@ services:
       harness-network:
 
   platform-service:
-    image: harness/platform-service-signed:73225
+    image: harness/platform-service-signed:73228
     deploy:
       resources:
         limits:
@@ -129,7 +129,7 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:73225
+    image: harness/delegate-proxy-signed:73228
     deploy:
       resources:
         limits:
