@@ -76,8 +76,8 @@ data:
   REDIS_URL: redis://redis:6379
   RESOURCE_CONSTRAINT_BACKUP_ITERATOR_THREAD_COUNT: '2'
   SEARCH_ENABLED: 'false'
-  SEGMENT_NG_ENABLED: 'true'
-  SEGMENT_NG_URL: https://stats.drone.ci/api/v1/
+  SEGMENT_ENABLED_NG: 'true'
+  SEGMENT_URL_NG: https://stats.drone.ci/api/v1/
   SERVER_MAX_THREADS: '12'
   SERVER_PORT: '9090'
   SERVICE_ACC: /opt/harness/svc/service_acc.json
