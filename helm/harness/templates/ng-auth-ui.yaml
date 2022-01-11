@@ -68,8 +68,8 @@ spec:
             name: ng-auth-ui
         resources:
           limits:
-            memory: 24Mi
-            cpu: 200m
+            memory: {{ .Values.ng_auth_ui.resources.limits.memory }}
+            cpu: {{ .Values.ng_auth_ui.resources.limits.cpu }}
           requests:
-            memory: 24Mi
-            cpu: 200m
+            memory: {{ .Values.ng_auth_ui.resources.requests.memory }}
+            cpu: {{ .Values.ng_auth_ui.resources.requests.cpu }}

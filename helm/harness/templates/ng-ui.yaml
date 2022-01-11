@@ -68,8 +68,8 @@ spec:
             name: ng-ui
         resources:
           limits:
-            memory: 32Mi
-            cpu: 200m
+            memory: {{ .Values.ng_ui.resources.limits.memory }}
+            cpu: {{ .Values.ng_ui.resources.limits.cpu }}
           requests:
-            memory: 32Mi
-            cpu: 200m
+            memory: {{ .Values.ng_ui.resources.requests.memory }}
+            cpu: {{ .Values.ng_ui.resources.requests.cpu }}

@@ -20,11 +20,11 @@ spec:
           name: delegate-proxy
           resources:
             limits:
-              memory: 96Mi
-              cpu: 200m
+              memory: {{ .Values.delegate_proxy.resources.limits.memory }}
+              cpu: {{ .Values.delegate_proxy.resources.limits.cpu }}
             requests:
-              memory: 48Mi
-              cpu: 200m
+              memory: {{ .Values.delegate_proxy.resources.requests.memory }}
+              cpu: {{ .Values.delegate_proxy.resources.requests.cpu }}
 
 ---
 

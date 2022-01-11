@@ -1,11 +1,117 @@
+ng_ui:
+  resources:
+    limits:
+      memory: 32Mi
+      cpu: 200m
+    requests:
+      memory: 32Mi
+      cpu: 200m
+
+ng_auth_ui:
+  resources:
+    limits:
+      memory: 24Mi
+      cpu: 200m
+    requests:
+      memory: 24Mi
+      cpu: 200m
+
 manager:
-  memory: 1024
+  config:
+    memory: 232
+  resources:
+    limits:
+      memory: 1454Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
 ng_manager:
-  memory: 1024
+  config:
+    memory: 232
+  resources:
+    limits:
+      memory: 1454Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
-pms:
-  memory: 1024
+pipeline:
+  config:
+    memory: 200
+  resources:
+    limits:
+      memory: 1320Mi
+      cpu: 1
+    requests:
+      memory: 576Mi
+      cpu: 200m
 
 platform:
-  memory: 512
+  config:
+    memory: 60
+  resources:
+    limits:
+      memory: 372Mi
+      cpu: 1
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+log_service:
+  resources:
+    limits:
+      memory: 160Mi
+      cpu: 200m
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+scm:
+  resources:
+    limits:
+      memory: 96Mi
+      cpu: 200m
+    requests:
+      memory: 96Mi
+      cpu: 200m
+
+delegate_proxy:
+  resources:
+    limits:
+      memory: 48Mi
+      cpu: 200m
+    requests:
+      memory: 48Mi
+      cpu: 200m
+
+proxy:
+  resources:
+    limits:
+      memory: 32Mi
+      cpu: 200m
+    requests:
+      memory: 32Mi
+      cpu: 200m
+
+redis:
+  resources:
+    limits:
+      memory: 384Mi
+      cpu: 200m
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+mongo:
+  resources:
+    limits:
+      memory: 768Mi
+      cpu: 200m
+    requests:
+      memory: 512Mi
+      cpu: 200m
+      storage: 10Gi
+      wiredTigerCacheSize: 0.375

@@ -45,8 +45,8 @@ spec:
           initialDelaySeconds: 10
         resources:
           limits:
-            memory: 96Mi
-            cpu: 200m
+            memory: {{ .Values.scm.resources.limits.memory }}
+            cpu: {{ .Values.scm.resources.limits.cpu }}
           requests:
-            memory: 96Mi
-            cpu: 200m
+            memory: {{ .Values.scm.resources.requests.memory }}
+            cpu: {{ .Values.scm.resources.requests.cpu }}

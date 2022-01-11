@@ -54,8 +54,8 @@ spec:
           protocol: "TCP"    
         resources:
           limits:
-            memory: 160Mi
-            cpu: 200m
+            memory: {{ .Values.log_service.resources.limits.memory }}
+            cpu: {{ .Values.log_service.resources.limits.cpu }}
           requests:
-            memory: 128Mi
-            cpu: 200m
+            memory: {{ .Values.log_service.resources.requests.memory }}
+            cpu: {{ .Values.log_service.resources.requests.cpu }}

@@ -22,7 +22,7 @@ data:
   LOCK_CONFIG_REDIS_URL: redis://redis:6379
   LOGGING_LEVEL: WARN
   MANAGER_CLIENT_BASEURL: http://proxy/api/
-  MEMORY: '{{ .Values.platform.memory }}m'
+  MEMORY: '{{ .Values.platform.config.memory }}m'
   MOCK_ACCESS_CONTROL_SERVICE: 'true'
   NG_MANAGER_CLIENT_BASEURL: http://proxy/ng/api/
   PIPELINE_SERVICE_CLIENT_BASEURL: http://proxy/pipeline/api/
@@ -123,11 +123,11 @@ spec:
           failureThreshold: 20
         resources:
           limits:
-            memory: 372Mi
-            cpu: 1
+            memory: {{ .Values.platform.resources.limits.memory }}
+            cpu: {{ .Values.platform.resources.limits.cpu }}
           requests:
-            memory: 128Mi
-            cpu: 200m
+            memory: {{ .Values.platform.resources.requests.memory }}
+            cpu: {{ .Values.platform.resources.requests.cpu }}
       volumes:
         - name: mongo-config
           secret:

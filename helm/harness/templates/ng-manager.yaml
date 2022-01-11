@@ -28,7 +28,7 @@ data:
   MANAGER_CLIENT_BASEURL: http://proxy/api/
   MANAGER_TARGET: manager:9879
   MANAGER_UI_URL: http://proxy
-  MEMORY: '{{ .Values.ng_manager.memory }}m'
+  MEMORY: '{{ .Values.ng_manager.config.memory }}m'
   MOCK_ACCESS_CONTROL_SERVICE: 'true'
   NG_MANAGER_API_URL: http://proxy/ng/api/
   NG_MANAGER_AUTHORITY: default-authority.harness.io
@@ -148,8 +148,8 @@ spec:
           failureThreshold: 10
         resources:
           limits:
-            memory: 1454Mi
-            cpu: 1
+            memory: {{ .Values.ng_manager.resources.limits.memory }}
+            cpu: {{ .Values.ng_manager.resources.limits.cpu }}
           requests:
-            memory: 512Mi
-            cpu: 200m
+            memory: {{ .Values.ng_manager.resources.requests.memory }}
+            cpu: {{ .Values.ng_manager.resources.requests.cpu }}

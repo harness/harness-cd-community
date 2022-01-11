@@ -222,11 +222,11 @@ spec:
               subPath: nginx.conf
           resources:
             limits:
-              memory: 32Mi
-              cpu: 200m
+              memory: {{ .Values.proxy.resources.limits.memory }}
+              cpu: {{ .Values.proxy.resources.limits.cpu }}
             requests:
-              memory: 32Mi
-              cpu: 200m
+              memory: {{ .Values.proxy.resources.requests.memory }}
+              cpu: {{ .Values.proxy.resources.requests.cpu }}
       volumes:
         - name: nginx-config
           configMap:

@@ -60,11 +60,11 @@ spec:
           name: data
         resources:
           limits:
-            memory: 384Mi
-            cpu: 200m
+            memory: {{ .Values.redis.resources.limits.memory }}
+            cpu: {{ .Values.redis.resources.limits.cpu }}
           requests:
-            memory: 128Mi
-            cpu: 200m
+            memory: {{ .Values.redis.resources.requests.memory }}
+            cpu: {{ .Values.redis.resources.requests.cpu }}
       volumes:
       - name: data
         emptyDir: {}

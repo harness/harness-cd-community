@@ -12,14 +12,120 @@ versions:
   redis: 6.2.5-alpine
   scm: release-27
 
+ng_ui:
+  resources:
+    limits:
+      memory: 16Mi
+      cpu: 200m
+    requests:
+      memory: 16Mi
+      cpu: 200m
+
+ng_auth_ui:
+  resources:
+    limits:
+      memory: 12Mi
+      cpu: 200m
+    requests:
+      memory: 12Mi
+      cpu: 200m
+
 manager:
-  memory: 232
+  config:
+    memory: 232
+  resources:
+    limits:
+      memory: 780Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
 ng_manager:
-  memory: 232
+  config:
+    memory: 232
+  resources:
+    limits:
+      memory: 752Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
-pms:
-  memory: 200
+pipeline:
+  config:
+    memory: 200
+  resources:
+    limits:
+      memory: 660Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
 platform:
-  memory: 60
+  config:
+    memory: 60
+  resources:
+    limits:
+      memory: 244Mi
+      cpu: 1
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+log_service:
+  resources:
+    limits:
+      memory: 72Mi
+      cpu: 200m
+    requests:
+      memory: 72Mi
+      cpu: 200m
+
+scm:
+  resources:
+    limits:
+      memory: 48Mi
+      cpu: 200m
+    requests:
+      memory: 48Mi
+      cpu: 200m
+
+delegate_proxy:
+  resources:
+    limits:
+      memory: 24Mi
+      cpu: 200m
+    requests:
+      memory: 24Mi
+      cpu: 200m
+
+proxy:
+  resources:
+    limits:
+      memory: 16Mi
+      cpu: 200m
+    requests:
+      memory: 16Mi
+      cpu: 200m
+
+redis:
+  resources:
+    limits:
+      memory: 128Mi
+      cpu: 200m
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+mongo:
+  resources:
+    limits:
+      memory: 320Mi
+      cpu: 200m
+    requests:
+      memory: 320Mi
+      cpu: 200m
+      storage: 10Gi
+      wiredTigerCacheSize: 0.125

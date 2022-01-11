@@ -35,7 +35,7 @@ data:
   MANAGER_BASE_URL: http://proxy/api/
   MANAGER_CLIENT_BASEURL: http://proxy/api/
   MANAGER_TARGET: manager:9879
-  MEMORY: '{{ .Values.pms.memory }}m'
+  MEMORY: '{{ .Values.pipeline.config.memory }}m'
   MOCK_ACCESS_CONTROL_SERVICE: 'true'
   NG_MANAGER_AUTHORITY: default-authority.harness.io
   NG_MANAGER_BASE_URL: http://proxy/ng/api/
@@ -172,11 +172,11 @@ spec:
           failureThreshold: 20
         resources:
           limits:
-            memory: 1320Mi
-            cpu: 1
+            memory: {{ .Values.pipeline.resources.limits.memory }}
+            cpu: {{ .Values.pipeline.resources.limits.cpu }}
           requests:
-            memory: 576Mi
-            cpu: 200m
+            memory: {{ .Values.pipeline.resources.requests.memory }}
+            cpu: {{ .Values.pipeline.resources.requests.cpu }}
       volumes:
         - name: mongo-config
           secret:
