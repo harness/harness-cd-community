@@ -33,19 +33,19 @@ data:
   BLOCKING_CAPABILITY_PERMISSIONS_RECORD_ITERATOR_THREAD_COUNT: '2'
   CACHE_BACKEND: REDIS
   CAPSULE_JAR: rest-capsule.jar
-  COMMON_POOL_CORE_SIZE: '1'
-  COMMON_POOL_MAX_SIZE: '10'
+  COMMON_POOL_CORE_SIZE: '{{ .Values.manager.config.common_pool_core_size | default "1" }}'
+  COMMON_POOL_MAX_SIZE: '{{ .Values.manager.config.common_pool_max_size | default "10" }}'
   CRONS_THREAD_COUNT: '1'
-  DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '2'
+  DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.delegate_capabilities_record_iterator_thread_count | default "2" }}'
   DELEGATE_DOCKER_IMAGE: harness/delegate:latest
   DELEGATE_GRPC_AUTHORITY: default-authority.harness.io
   DELEGATE_GRPC_TARGET: {{ .Values.harness_host | default "host.docker.internal" }}:9879
   DELEGATE_METADATA_URL: http://proxy/storage/wingsdelegates/delegateprod.txt
   DELEGATE_SERVICE_AUTHORITY: default-authority.harness.io
   DELEGATE_SERVICE_TARGET: manager:9879
-  DELEGATE_TASK_EXPIRY_CHECK_ITERATOR_THREAD_COUNT: '2'
-  DEPLOYMENT_EVENT_LISTENER_COUNT: '1'
-  DEPLOYMENT_TIME_SERIES_EVENT_LISTENER_COUNT: '1'
+  DELEGATE_TASK_EXPIRY_CHECK_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.delegate_task_expiry_check_iterator_thread_count | default "2" }}'
+  DEPLOYMENT_EVENT_LISTENER_COUNT: '{{ .Values.manager.config.deployment_event_listener_count | default "1" }}'
+  DEPLOYMENT_TIME_SERIES_EVENT_LISTENER_COUNT: '{{ .Values.manager.config.deployment_time_series_event_listener_count | default "1" }}'
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
   DISABLE_RESOURCE_VALIDATION: 'true'
@@ -53,12 +53,12 @@ data:
   ENABLE_AUDIT: 'false'
   ENABLE_SERIALGC: 'true'
   EVENTS_FRAMEWORK_AVAILABLE_IN_ONPREM: 'true'
-  EVENTS_FRAMEWORK_NETTY_THREADS: '1'
+  EVENTS_FRAMEWORK_NETTY_THREADS: '{{ .Values.manager.config.events_framework_netty_threads | default "1" }}'
   EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
-  EVENT_DELIVERY_ITERATOR_THREAD_COUNT: '2'
-  EXECUTION_EVENT_LISTENER_COUNT: '1'
+  EVENT_DELIVERY_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.event_delivery_iterator_thread_count | default "2" }}'
+  EXECUTION_EVENT_LISTENER_COUNT: '{{ .Values.manager.config.execution_event_listener_count | default "1" }}'
   FEATURES: RBAC,LDAP_SSO_PROVIDER,SHELL_SCRIPT_PROVISION,CUSTOM_DASHBOARD,GRAPHQL,SEND_SLACK_NOTIFICATION_FROM_DELEGATE,CONNECTORS_REF_SECRETS_MIGRATION,CDNG_ENABLED,NEXT_GEN_ENABLED,LOG_STREAMING_INTEGRATION,NG_CG_TASK_ASSIGNMENT_ISOLATION
-  GENERAL_NOTIFY_EVENT_LISTENER_COUNT: '1'
+  GENERAL_NOTIFY_EVENT_LISTENER_COUNT: '{{ .Values.manager.config.general_notify_event_listener_count | default "1" }}'
   GRAPHQL_ENABLED: 'false'
   INSTANCE_SYNC_ITERATOR_THREAD_COUNT: '2'
   JAVA_ADVANCED_FLAGS: -XX:-TieredCompilation
@@ -69,16 +69,16 @@ data:
   LOG_STREAMING_SERVICE_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   MEMORY: '{{ .Values.manager.config.memory }}'
   NG_MANAGER_BASE_URL: http://proxy/ng/api/
-  ORCHESTRATION_NOTIFY_EVENT_LISTENER_COUNT: '1'
-  PERPETUAL_TASK_ASSIGNMENT_ITERATOR_THREAD_COUNT: '2'
-  PERPETUAL_TASK_REBALANCE_ITERATOR_THREAD_COUNT: '2'
+  ORCHESTRATION_NOTIFY_EVENT_LISTENER_COUNT: '{{ .Values.manager.config.orchestration_notify_event_listener_count | default "1" }}'
+  PERPETUAL_TASK_ASSIGNMENT_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.perpetual_task_assignment_iterator_thread_count | default "2" }}'
+  PERPETUAL_TASK_REBALANCE_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.perpetual_task_rebalance_iterator_thread_count | default "2" }}'
   REDIS_NETTY_THREADS: '1'
   REDIS_URL: redis://redis:6379
   RESOURCE_CONSTRAINT_BACKUP_ITERATOR_THREAD_COUNT: '2'
   SEARCH_ENABLED: 'false'
   SEGMENT_ENABLED_NG: 'true'
   SEGMENT_URL_NG: https://stats.drone.ci/api/v1/
-  SERVER_MAX_THREADS: '12'
+  SERVER_MAX_THREADS: '{{ .Values.manager.config.server_max_threads | default "12" }}'
   SERVER_PORT: '9090'
   SERVICE_ACC: /opt/harness/svc/service_acc.json
   SETTING_ATTRIBUTE_VALIDATE_CONNECTIVITY_ITERATOR_THREAD_COUNT: '2'

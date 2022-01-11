@@ -3,30 +3,30 @@ kind: ConfigMap
 metadata:
   name: pipeline-service
 data:
-  ADVISE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  ADVISE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.advise_event_consumer_thread_count | default "1" }}'
   AUTH_ENABLED: 'true'
-  BARRIER_ITERATOR_THREAD_POOL_SIZE: '2'
+  BARRIER_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.barrier_iterator_thread_pool_size | default "2" }}'
   CACHE_BACKEND: REDIS
   CACHE_CONFIG_REDIS_URL: redis://redis:6379
   CI_MANAGER_AUTHORITY: default-authority.harness.io
   CI_MANAGER_BASE_URL: http://proxy/ci/
   CI_MANAGER_TARGET: ci-manager:9979
-  COMMON_POOL_CORE_SIZE: '1'
-  COMMON_POOL_MAX_SIZE: '5'
-  CREATE_PLAN_EVENT_CONSUMER_THREAD_COUNT: '1'
+  COMMON_POOL_CORE_SIZE: '{{ .Values.pipeline.config.common_pool_core_size | default "1" }}'
+  COMMON_POOL_MAX_SIZE: '{{ .Values.pipeline.config.common_pool_max_size | default "5" }}'
+  CREATE_PLAN_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.create_plan_event_consumer_thread_count | default "1" }}'
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
   DISABLE_RESOURCE_VALIDATION: 'true'
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   ENABLE_AUDIT: 'false'
   ENABLE_SERIALGC: 'true'
-  EVENTS_FRAMEWORK_NETTY_THREADS: '1'
+  EVENTS_FRAMEWORK_NETTY_THREADS: '{{ .Values.pipeline.config.events_framework_netty_threads | default "1" }}'
   EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
-  FACILITATE_EVENT_CONSUMER_THREAD_COUNT: '1'
-  GRAPH_UPDATE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  FACILITATE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.facilitate_event_consumer_thread_count | default "1" }}'
+  GRAPH_UPDATE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.graph_update_event_consumer_thread_count | default "1" }}'
   GRPC_SERVER_PORT: '12011'
-  INTERRUPT_CONSUMER_THREAD_COUNT: '1'
-  INTERRUPT_MONITOR_ITERATOR_THREAD_POOL_SIZE: '2'
+  INTERRUPT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.interrupt_consumer_thread_count | default "1" }}'
+  INTERRUPT_MONITOR_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.interrupt_monitor_iterator_thread_pool_size | default "2" }}'
   JAVA_ADVANCED_FLAGS: -XX:-TieredCompilation
   LOCK_CONFIG_REDIS_URL: redis://redis:6379
   LOGGING_LEVEL: WARN
@@ -42,39 +42,39 @@ data:
   NG_MANAGER_GITSYNC_AUTHORITY: default-authority.harness.io
   NG_MANAGER_GITSYNC_TARGET: ng-manager:13002
   NG_MANAGER_TARGET: ng-manager:9979
-  NODE_START_EVENT_CONSUMER_THREAD_COUNT: '1'
+  NODE_START_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.node_start_event_consumer_thread_count | default "1" }}'
   NOTIFICATION_BASE_URL: http://proxy/notifications/api/
-  ORCHESTRATION_EVENT_CONSUMER_THREAD_COUNT: '1'
-  ORCHESTRATION_POOL_CORE_SIZE: '1'
-  ORCHESTRATION_POOL_MAX_SIZE: '2'
-  ORCHESTRATION_VISUALIZATION_POOL_CORE_SIZE: '1'
-  ORCHESTRATION_VISUALIZATION_POOL_MAX_SIZE: '2'
-  PARTIAL_PLAN_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '1'
-  PIPELINE_EXECUTION_POOL_CORE_SIZE: '1'
-  PIPELINE_EXECUTION_POOL_MAX_SIZE: '10'
+  ORCHESTRATION_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.orchestration_event_consumer_thread_count | default "1" }}'
+  ORCHESTRATION_POOL_CORE_SIZE: '{{ .Values.pipeline.config.orchestration_pool_core_size | default "1" }}'
+  ORCHESTRATION_POOL_MAX_SIZE: '{{ .Values.pipeline.config.orchestration_pool_max_size | default "2" }}'
+  ORCHESTRATION_VISUALIZATION_POOL_CORE_SIZE: '{{ .Values.pipeline.config.orchestration_visualization_pool_core_size | default "1" }}'
+  ORCHESTRATION_VISUALIZATION_POOL_MAX_SIZE: '{{ .Values.pipeline.config.orchestration_visualization_pool_max_size | default "2" }}'
+  PARTIAL_PLAN_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.partial_plan_response_event_consumer_thread_count | default "1" }}'
+  PIPELINE_EXECUTION_POOL_CORE_SIZE: '{{ .Values.pipeline.config.pipeline_execution_pool_core_size | default "1" }}'
+  PIPELINE_EXECUTION_POOL_MAX_SIZE: '{{ .Values.pipeline.config.pipeline_execution_pool_max_size | default "10" }}'
   PIPELINE_SERVICE_BASE_URL: http://proxy/ng/#
-  PLAN_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '1'
+  PLAN_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.plan_notify_event_consumer_thread_count | default "1" }}'
   PMS_API_BASE_URL: http://proxy/pipeline/api/
-  PMS_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '1'
-  PMS_SDK_EXECUTION_POOL_CORE_SIZE: '1'
-  PMS_SDK_EXECUTION_POOL_MAX_SIZE: '2'
-  PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE: '1'
-  PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE: '2'
-  PROGRESS_EVENT_CONSUMER_THREAD_COUNT: '1'
-  REDIS_NETTY_THREADS: '1'
-  RESOURCE_RESTRAINT_ITERATOR_THREAD_POOL_SIZE: '2'
-  RESUME_EVENT_CONSUMER_THREAD_COUNT: '1'
-  SCHEDULED_TRIGGER_ITERATOR_THREAD_POOL_SIZE: '2'
+  PMS_NOTIFY_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.pms_notify_event_consumer_thread_count | default "1" }}'
+  PMS_SDK_EXECUTION_POOL_CORE_SIZE: '{{ .Values.pipeline.config.pms_sdk_execution_pool_core_size | default "1" }}'
+  PMS_SDK_EXECUTION_POOL_MAX_SIZE: '{{ .Values.pipeline.config.pms_sdk_execution_pool_max_size | default "2" }}'
+  PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE: '{{ .Values.pipeline.config.pms_sdk_orchestration_event_pool_core_size | default "1" }}'
+  PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE: '{{ .Values.pipeline.config.pms_sdk_orchestration_event_pool_max_size | default "2" }}'
+  PROGRESS_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.progress_event_consumer_thread_count | default "1" }}'
+  REDIS_NETTY_THREADS: '{{ .Values.pipeline.config.redis_netty_threads | default "1" }}'
+  RESOURCE_RESTRAINT_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.resource_restraint_iterator_thread_pool_size | default "2" }}'
+  RESUME_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.resume_event_consumer_thread_count | default "1" }}'
+  SCHEDULED_TRIGGER_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.scheduled_trigger_iterator_thread_pool_size | default "2" }}'
   SCM_SERVICE_URI: scm:8091
-  SDK_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '1'
+  SDK_RESPONSE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.sdk_response_event_consumer_thread_count | default "1" }}'
   SEGMENT_ENABLED: 'true'
   SEGMENT_URL: https://stats.drone.ci/api/v1/
-  SERVER_MAX_THREADS: '12'
-  TIMEOUT_ENGINE_ITERATOR_THREAD_POOL_SIZE: '2'
+  SERVER_MAX_THREADS: '{{ .Values.pipeline.config.server_max_threads | default "12" }}'
+  TIMEOUT_ENGINE_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.timeout_engine_iterator_thread_pool_size | default "2" }}'
   USE_REDIS_FOR_INTERRUPTS: 'true'
   USE_REDIS_FOR_ORCHESTRATION_EVENTS: 'true'
   USE_REDIS_FOR_SDK_RESPONSE_EVENTS: 'true'
-  WEBHOOK_ITERATOR_THREAD_POOL_SIZE: '2'
+  WEBHOOK_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.pipeline.config.webhook_iterator_thread_pool_size | default "2" }}'
 
 ---
 
