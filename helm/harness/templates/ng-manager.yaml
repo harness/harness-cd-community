@@ -146,3 +146,10 @@ spec:
           timeoutSeconds: 10
           periodSeconds: 10
           failureThreshold: 10
+        resources:
+          limits:
+            memory: 1454Mi
+            cpu: 1
+          requests:
+            memory: 512Mi
+            cpu: 200m

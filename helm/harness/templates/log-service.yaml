@@ -52,3 +52,10 @@ spec:
         - name: http-log-svc
           containerPort: 8079
           protocol: "TCP"    
+        resources:
+          limits:
+            memory: 160Mi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 200m

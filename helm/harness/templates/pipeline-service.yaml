@@ -170,6 +170,13 @@ spec:
           timeoutSeconds: 5
           periodSeconds: 10
           failureThreshold: 20
+        resources:
+          limits:
+            memory: 1320Mi
+            cpu: 1
+          requests:
+            memory: 576Mi
+            cpu: 200m
       volumes:
         - name: mongo-config
           secret:
