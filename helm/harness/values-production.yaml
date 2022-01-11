@@ -1,11 +1,182 @@
+ng_ui:
+  resources:
+    limits:
+      memory: 32Mi
+      cpu: 200m
+    requests:
+      memory: 32Mi
+      cpu: 200m
+
+ng_auth_ui:
+  resources:
+    limits:
+      memory: 24Mi
+      cpu: 200m
+    requests:
+      memory: 24Mi
+      cpu: 200m
+
 manager:
-  memory: 1024
+  config:
+    common_pool_core_size: 2
+    common_pool_max_size: 20
+    delegate_capabilities_record_iterator_thread_count: 4
+    delegate_task_expiry_check_iterator_thread_count: 4
+    deployment_event_listener_count: 2
+    deployment_time_series_event_listener_count: 2
+    events_framework_netty_threads: 2
+    event_delivery_iterator_thread_count: 4
+    execution_event_listener_count: 2
+    general_notify_event_listener_count: 2
+    memory: 512
+    orchestration_notify_event_listener_count: 2
+    perpetual_task_assignment_iterator_thread_count: 4
+    perpetual_task_rebalance_iterator_thread_count: 4
+    server_max_threads: 24
+  resources:
+    limits:
+      memory: 1454Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
 ng_manager:
-  memory: 1024
+  config:
+    common_pool_core_size: 2
+    common_pool_max_size: 10
+    events_framework_netty_threads: 2
+    git_fullsync_entity_iterator_thread_pool_size: 4
+    memory: 512
+    ng_vault_iterator_thread_pool_size: 4
+    pms_sdk_execution_pool_core_size: 2
+    pms_sdk_execution_pool_max_size: 4
+    pms_sdk_orchestration_event_pool_core_size: 2
+    pms_sdk_orchestration_event_pool_max_size: 4
+    redis_netty_threads: 2
+    server_max_threads: 32
+    webhook_event_processing_service_thread_size: 4
+  resources:
+    limits:
+      memory: 1454Mi
+      cpu: 1
+    requests:
+      memory: 512Mi
+      cpu: 200m
 
-pms:
-  memory: 1024
+pipeline:
+  config:
+    advise_event_consumer_thread_count: 2
+    barrier_iterator_thread_pool_size: 4
+    common_pool_core_size: 2
+    common_pool_max_size: 10
+    create_plan_event_consumer_thread_count: 2
+    events_framework_netty_threads: 2
+    facilitate_event_consumer_thread_count: 2
+    graph_update_event_consumer_thread_count: 2
+    interrupt_consumer_thread_count: 2
+    interrupt_monitor_iterator_thread_pool_size: 4
+    memory: 576
+    node_start_event_consumer_thread_count: 2
+    orchestration_event_consumer_thread_count: 2
+    orchestration_pool_core_size: 2
+    orchestration_pool_max_size: 4
+    orchestration_visualization_pool_core_size: 2
+    orchestration_visualization_pool_max_size: 4
+    partial_plan_response_event_consumer_thread_count: 2
+    pipeline_execution_pool_core_size: 2
+    pipeline_execution_pool_max_size: 20
+    plan_notify_event_consumer_thread_count: 2
+    pms_notify_event_consumer_thread_count: 2
+    pms_sdk_execution_pool_core_size: 2
+    pms_sdk_execution_pool_max_size: 4
+    pms_sdk_orchestration_event_pool_core_size: 2
+    pms_sdk_orchestration_event_pool_max_size: 4
+    progress_event_consumer_thread_count: 2
+    redis_netty_threads: 2
+    resource_restraint_iterator_thread_pool_size: 4
+    resume_event_consumer_thread_count: 2
+    scheduled_trigger_iterator_thread_pool_size: 4
+    sdk_response_event_consumer_thread_count: 2
+    server_max_threads: 24
+    timeout_engine_iterator_thread_pool_size: 4
+    webhook_iterator_thread_pool_size: 4
+  resources:
+    limits:
+      memory: 1320Mi
+      cpu: 1
+    requests:
+      memory: 576Mi
+      cpu: 200m
 
 platform:
-  memory: 512
+  config:
+    common_pool_core_size: 2
+    common_pool_max_size: 4
+    events_framework_netty_threads: 2
+    memory: 128
+    redis_netty_threads: 2
+    server_max_threads: 24
+  resources:
+    limits:
+      memory: 372Mi
+      cpu: 1
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+log_service:
+  resources:
+    limits:
+      memory: 160Mi
+      cpu: 200m
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+scm:
+  resources:
+    limits:
+      memory: 96Mi
+      cpu: 200m
+    requests:
+      memory: 96Mi
+      cpu: 200m
+
+delegate_proxy:
+  resources:
+    limits:
+      memory: 48Mi
+      cpu: 200m
+    requests:
+      memory: 48Mi
+      cpu: 200m
+
+proxy:
+  resources:
+    limits:
+      memory: 32Mi
+      cpu: 200m
+    requests:
+      memory: 32Mi
+      cpu: 200m
+
+redis:
+  resources:
+    limits:
+      memory: 384Mi
+      cpu: 200m
+    requests:
+      memory: 128Mi
+      cpu: 200m
+
+mongo:
+  resources:
+    limits:
+      memory: 768Mi
+      cpu: 200m
+    requests:
+      memory: 512Mi
+      cpu: 200m
+      storage: 10Gi
+      wiredTigerCacheSize: 0.375

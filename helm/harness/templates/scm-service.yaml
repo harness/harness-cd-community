@@ -43,3 +43,10 @@ spec:
           exec:
             command: ["/grpc_health_probe", "-addr=:8091"]
           initialDelaySeconds: 10
+        resources:
+          limits:
+            memory: {{ .Values.scm.resources.limits.memory }}
+            cpu: {{ .Values.scm.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.scm.resources.requests.memory }}
+            cpu: {{ .Values.scm.resources.requests.cpu }}

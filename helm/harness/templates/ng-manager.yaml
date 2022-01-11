@@ -5,8 +5,8 @@ metadata:
 data:
   AUDIT_ENABLED: 'false'
   CACHE_BACKEND: REDIS
-  COMMON_POOL_CORE_SIZE: '1'
-  COMMON_POOL_MAX_SIZE: '5'
+  COMMON_POOL_CORE_SIZE: '{{ .Values.ng_manager.config.common_pool_core_size | default "1" }}'
+  COMMON_POOL_MAX_SIZE: '{{ .Values.ng_manager.config.common_pool_max_size | default "5" }}'
   CURRENT_GEN_UI_URL: http://proxy/#/
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
@@ -14,9 +14,9 @@ data:
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   ENABLE_DEFAULT_RESOURCE_GROUP_CREATION: 'true'
   ENABLE_SERIALGC: 'true'
-  EVENTS_FRAMEWORK_NETTY_THREADS: '1'
+  EVENTS_FRAMEWORK_NETTY_THREADS: '{{ .Values.ng_manager.config.events_framework_netty_threads | default "1" }}'
   EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
-  GIT_FULLSYNC_ENTITY_ITERATOR_THREAD_POOL_SIZE: '2'
+  GIT_FULLSYNC_ENTITY_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.ng_manager.config.git_fullsync_entity_iterator_thread_pool_size | default "2" }}'
   GRPC_SERVER_PORT: '9979'
   JAVA_ADVANCED_FLAGS: -XX:-TieredCompilation
   LICENSE_DEPLOY_VARIANT: COMMUNITY
@@ -28,31 +28,31 @@ data:
   MANAGER_CLIENT_BASEURL: http://proxy/api/
   MANAGER_TARGET: manager:9879
   MANAGER_UI_URL: http://proxy
-  MEMORY: '{{ .Values.ng_manager.memory }}m'
+  MEMORY: '{{ .Values.ng_manager.config.memory }}m'
   MOCK_ACCESS_CONTROL_SERVICE: 'true'
   NG_MANAGER_API_URL: http://proxy/ng/api/
   NG_MANAGER_AUTHORITY: default-authority.harness.io
   NG_MANAGER_CLIENT_BASEURL: http://proxy/ng/api/
   NG_MANAGER_TARGET: localhost:13002
   NG_MANAGER_UI_URL: http://proxy/ng/#/
-  NG_VAULT_ITERATOR_THREAD_POOL_SIZE: '2'
+  NG_VAULT_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.ng_manager.config.ng_vault_iterator_thread_pool_size | default "2" }}'
   PMS_AUTHORITY: default-authority.harness.io
   PMS_GITSYNC_AUTHORITY: default-authority.harness.io
   PMS_GITSYNC_TARGET: pipeline-service:14002
-  PMS_SDK_EXECUTION_POOL_CORE_SIZE: '1'
-  PMS_SDK_EXECUTION_POOL_MAX_SIZE: '2'
-  PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE: '1'
-  PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE: '2'
+  PMS_SDK_EXECUTION_POOL_CORE_SIZE: '{{ .Values.ng_manager.config.pms_sdk_execution_pool_core_size | default "1" }}'
+  PMS_SDK_EXECUTION_POOL_MAX_SIZE: '{{ .Values.ng_manager.config.pms_sdk_execution_pool_max_size | default "2" }}'
+  PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE: '{{ .Values.ng_manager.config.pms_sdk_orchestration_event_pool_core_size | default "1" }}'
+  PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE: '{{ .Values.ng_manager.config.pms_sdk_orchestration_event_pool_max_size | default "2" }}'
   PMS_TARGET: pipeline-service:12011
-  REDIS_NETTY_THREADS: '1'
+  REDIS_NETTY_THREADS: '{{ .Values.ng_manager.config.redis_netty_threads | default "1" }}'
   RESOURCE_GROUP_BASE_URL: http://proxy/resourcegroup/api/
   SCM_SERVICE_URI: scm:8091
   SEGMENT_ENABLED: 'true'
   SEGMENT_URL: https://stats.drone.ci/api/v1/
-  SERVER_MAX_THREADS: '16'
+  SERVER_MAX_THREADS: '{{ .Values.ng_manager.config.server_max_threads | default "16" }}'
   SHOULD_CONFIGURE_WITH_PMS: 'true'
   USE_REDIS_FOR_SDK_RESPONSE_EVENTS: 'true'
-  WEBHOOK_EVENT_PROCESSING_SERVICE_THREAD_SIZE: '2'
+  WEBHOOK_EVENT_PROCESSING_SERVICE_THREAD_SIZE: '{{ .Values.ng_manager.config.webhook_event_processing_service_thread_size | default "2" }}'
 
 ---
 
@@ -146,3 +146,10 @@ spec:
           timeoutSeconds: 10
           periodSeconds: 10
           failureThreshold: 10
+        resources:
+          limits:
+            memory: {{ .Values.ng_manager.resources.limits.memory }}
+            cpu: {{ .Values.ng_manager.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.ng_manager.resources.requests.memory }}
+            cpu: {{ .Values.ng_manager.resources.requests.cpu }}

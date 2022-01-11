@@ -5,8 +5,8 @@ metadata:
 data:
   AUDIT_CLIENT_BASEURL: http://proxy/audit/api/
   AUDIT_ENABLED: 'false'
-  COMMON_POOL_CORE_SIZE: '1'
-  COMMON_POOL_MAX_SIZE: '2'
+  COMMON_POOL_CORE_SIZE: '{{ .Values.manager.config.common_pool_core_size | default "1" }}'
+  COMMON_POOL_MAX_SIZE: '{{ .Values.manager.config.common_pool_max_size | default "2" }}'
   DEPLOY_MODE: KUBERNETES_ONPREM
   DEPLOY_VERSION: COMMUNITY
   DISABLE_RESOURCE_VALIDATION: 'true'
@@ -14,7 +14,7 @@ data:
   ENABLE_AUDIT_SERVICE: 'false'
   ENABLE_RESOURCE_GROUP: 'false'
   ENABLE_SERIALGC: 'true'
-  EVENTS_FRAMEWORK_NETTY_THREADS: '1'
+  EVENTS_FRAMEWORK_NETTY_THREADS: '{{ .Values.manager.config.events_framework_netty_threads | default "1" }}'
   EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
   GRPC_MANAGER_AUTHORITY: default-authority.harness.io
   GRPC_MANAGER_TARGET: manager:9879
@@ -22,14 +22,14 @@ data:
   LOCK_CONFIG_REDIS_URL: redis://redis:6379
   LOGGING_LEVEL: WARN
   MANAGER_CLIENT_BASEURL: http://proxy/api/
-  MEMORY: '{{ .Values.platform.memory }}m'
+  MEMORY: '{{ .Values.platform.config.memory }}m'
   MOCK_ACCESS_CONTROL_SERVICE: 'true'
   NG_MANAGER_CLIENT_BASEURL: http://proxy/ng/api/
   PIPELINE_SERVICE_CLIENT_BASEURL: http://proxy/pipeline/api/
   RBAC_URL: http://proxy/ng/api/
-  REDIS_NETTY_THREADS: '1'
+  REDIS_NETTY_THREADS: '{{ .Values.manager.config.redis_netty_threads | default "1" }}'
   RESOURCE_GROUP_CLIENT_BASE_URL: http://proxy/resourcegroup/api/
-  SERVER_MAX_THREADS: '12'
+  SERVER_MAX_THREADS: '{{ .Values.manager.config.server_max_threads | default "12" }}'
   SMTP_HOST: ''
   SMTP_PASSWORD: ''
   SMTP_PORT: '465'
@@ -121,6 +121,13 @@ spec:
           timeoutSeconds: 10
           periodSeconds: 10
           failureThreshold: 20
+        resources:
+          limits:
+            memory: {{ .Values.platform.resources.limits.memory }}
+            cpu: {{ .Values.platform.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.platform.resources.requests.memory }}
+            cpu: {{ .Values.platform.resources.requests.cpu }}
       volumes:
         - name: mongo-config
           secret:

@@ -18,6 +18,13 @@ spec:
         - image: harness/delegate-proxy-signed:{{ .Values.versions.manager }}
           imagePullPolicy: IfNotPresent
           name: delegate-proxy
+          resources:
+            limits:
+              memory: {{ .Values.delegate_proxy.resources.limits.memory }}
+              cpu: {{ .Values.delegate_proxy.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.delegate_proxy.resources.requests.memory }}
+              cpu: {{ .Values.delegate_proxy.resources.requests.cpu }}
 
 ---
 

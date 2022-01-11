@@ -66,3 +66,10 @@ spec:
         envFrom:
         - configMapRef:
             name: ng-auth-ui
+        resources:
+          limits:
+            memory: {{ .Values.ng_auth_ui.resources.limits.memory }}
+            cpu: {{ .Values.ng_auth_ui.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.ng_auth_ui.resources.requests.memory }}
+            cpu: {{ .Values.ng_auth_ui.resources.requests.cpu }}

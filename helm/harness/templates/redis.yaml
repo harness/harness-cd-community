@@ -58,6 +58,13 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data
+        resources:
+          limits:
+            memory: {{ .Values.redis.resources.limits.memory }}
+            cpu: {{ .Values.redis.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.redis.resources.requests.memory }}
+            cpu: {{ .Values.redis.resources.requests.cpu }}
       volumes:
       - name: data
         emptyDir: {}

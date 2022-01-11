@@ -220,6 +220,13 @@ spec:
             - name: nginx-config
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+          resources:
+            limits:
+              memory: {{ .Values.proxy.resources.limits.memory }}
+              cpu: {{ .Values.proxy.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.proxy.resources.requests.memory }}
+              cpu: {{ .Values.proxy.resources.requests.cpu }}
       volumes:
         - name: nginx-config
           configMap:

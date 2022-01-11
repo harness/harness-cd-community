@@ -2,18 +2,148 @@ version: '3.7'
 
 services:
 
+  ng-ui:
+    deploy:
+      resources:
+        limits:
+          memory: 32m
+
+  ng-auth-ui:
+    deploy:
+      resources:
+        limits:
+          memory: 24m
+
   manager:
     environment:
-      - MEMORY=1024
+      - COMMON_POOL_CORE_SIZE=2
+      - COMMON_POOL_MAX_SIZE=20
+      - DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT=4
+      - DELEGATE_TASK_EXPIRY_CHECK_ITERATOR_THREAD_COUNT=4
+      - DEPLOYMENT_EVENT_LISTENER_COUNT=2
+      - DEPLOYMENT_TIME_SERIES_EVENT_LISTENER_COUNT=2
+      - EVENTS_FRAMEWORK_NETTY_THREADS=2
+      - EVENT_DELIVERY_ITERATOR_THREAD_COUNT=4
+      - EXECUTION_EVENT_LISTENER_COUNT=2
+      - GENERAL_NOTIFY_EVENT_LISTENER_COUNT=2
+      - MEMORY=512
+      - ORCHESTRATION_NOTIFY_EVENT_LISTENER_COUNT=2
+      - PERPETUAL_TASK_ASSIGNMENT_ITERATOR_THREAD_COUNT=4
+      - PERPETUAL_TASK_REBALANCE_ITERATOR_THREAD_COUNT=4
+      - SERVER_MAX_THREADS=24
+    deploy:
+      resources:
+        limits:
+          memory: 1454m
 
   ng-manager:
     environment:
-      - MEMORY=1024m
+      - COMMON_POOL_CORE_SIZE=2
+      - COMMON_POOL_MAX_SIZE=10
+      - EVENTS_FRAMEWORK_NETTY_THREADS=2
+      - GIT_FULLSYNC_ENTITY_ITERATOR_THREAD_POOL_SIZE=4
+      - MEMORY=512m
+      - NG_VAULT_ITERATOR_THREAD_POOL_SIZE=4
+      - PMS_SDK_EXECUTION_POOL_CORE_SIZE=2
+      - PMS_SDK_EXECUTION_POOL_MAX_SIZE=4
+      - PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE=2
+      - PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE=4
+      - REDIS_NETTY_THREADS=2
+      - SERVER_MAX_THREADS=32
+      - WEBHOOK_EVENT_PROCESSING_SERVICE_THREAD_SIZE=4
+    deploy:
+      resources:
+        limits:
+          memory: 1454m
 
   pipeline-service:
     environment:
-      - MEMORY=1024m
+      - ADVISE_EVENT_CONSUMER_THREAD_COUNT=2
+      - BARRIER_ITERATOR_THREAD_POOL_SIZE=4
+      - COMMON_POOL_CORE_SIZE=2
+      - COMMON_POOL_MAX_SIZE=10
+      - CREATE_PLAN_EVENT_CONSUMER_THREAD_COUNT=2
+      - EVENTS_FRAMEWORK_NETTY_THREADS=2
+      - FACILITATE_EVENT_CONSUMER_THREAD_COUNT=2
+      - GRAPH_UPDATE_EVENT_CONSUMER_THREAD_COUNT=2
+      - INTERRUPT_CONSUMER_THREAD_COUNT=2
+      - INTERRUPT_MONITOR_ITERATOR_THREAD_POOL_SIZE=4
+      - MEMORY=576m
+      - NODE_START_EVENT_CONSUMER_THREAD_COUNT=2
+      - ORCHESTRATION_EVENT_CONSUMER_THREAD_COUNT=2
+      - ORCHESTRATION_POOL_CORE_SIZE=2
+      - ORCHESTRATION_POOL_MAX_SIZE=4
+      - ORCHESTRATION_VISUALIZATION_POOL_CORE_SIZE=2
+      - ORCHESTRATION_VISUALIZATION_POOL_MAX_SIZE=4
+      - PARTIAL_PLAN_RESPONSE_EVENT_CONSUMER_THREAD_COUNT=2
+      - PIPELINE_EXECUTION_POOL_CORE_SIZE=2
+      - PIPELINE_EXECUTION_POOL_MAX_SIZE=20
+      - PLAN_NOTIFY_EVENT_CONSUMER_THREAD_COUNT=2
+      - PMS_NOTIFY_EVENT_CONSUMER_THREAD_COUNT=2
+      - PMS_SDK_EXECUTION_POOL_CORE_SIZE=2
+      - PMS_SDK_EXECUTION_POOL_MAX_SIZE=4
+      - PMS_SDK_ORCHESTRATION_EVENT_POOL_CORE_SIZE=2
+      - PMS_SDK_ORCHESTRATION_EVENT_POOL_MAX_SIZE=4
+      - PROGRESS_EVENT_CONSUMER_THREAD_COUNT=2
+      - REDIS_NETTY_THREADS=2
+      - RESOURCE_RESTRAINT_ITERATOR_THREAD_POOL_SIZE=4
+      - RESUME_EVENT_CONSUMER_THREAD_COUNT=2
+      - SCHEDULED_TRIGGER_ITERATOR_THREAD_POOL_SIZE=4
+      - SDK_RESPONSE_EVENT_CONSUMER_THREAD_COUNT=2
+      - SERVER_MAX_THREADS=24
+      - TIMEOUT_ENGINE_ITERATOR_THREAD_POOL_SIZE=4
+      - WEBHOOK_ITERATOR_THREAD_POOL_SIZE=4
+    deploy:
+      resources:
+        limits:
+          memory: 1320m
 
   platform-service:
     environment:
-      - MEMORY=512m
+      - COMMON_POOL_CORE_SIZE=2
+      - COMMON_POOL_MAX_SIZE=4
+      - EVENTS_FRAMEWORK_NETTY_THREADS=2
+      - MEMORY=128m
+      - REDIS_NETTY_THREADS=2
+      - SERVER_MAX_THREADS=24
+    deploy:
+      resources:
+        limits:
+          memory: 372m
+
+  log-service:
+    deploy:
+      resources:
+        limits:
+          memory: 160m
+
+  scm:
+    deploy:
+      resources:
+        limits:
+          memory: 96m
+
+  delegate-proxy:
+    deploy:
+      resources:
+        limits:
+          memory: 48m
+
+  proxy:
+    deploy:
+      resources:
+        limits:
+          memory: 32m
+
+  redis:
+    deploy:
+      resources:
+        limits:
+          memory: 384m
+
+  mongo:
+    deploy:
+      resources:
+        limits:
+          memory: 768m
+    command: --wiredTigerCacheSizeGB 0.375 -f /etc/mongod.conf

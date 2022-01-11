@@ -409,7 +409,7 @@ spec:
             - --bind_ip=0.0.0.0
             - --auth
             - --keyFile=/data/configdb/key.txt
-            - --wiredTigerCacheSizeGB=1
+            - --wiredTigerCacheSizeGB={{ .Values.mongo.resources.requests.wiredTigerCacheSize }}
           livenessProbe:
             exec:
               command:
@@ -439,6 +439,13 @@ spec:
               mountPath: /data/configdb
             - name: workdir
               mountPath: /work-dir
+          resources:
+            limits:
+              memory: {{ .Values.mongo.resources.limits.memory }}
+              cpu: {{ .Values.mongo.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.mongo.resources.requests.memory }}
+              cpu: {{ .Values.mongo.resources.requests.cpu }}
 
       volumes:
         - name: config
@@ -464,4 +471,4 @@ spec:
           - "ReadWriteOnce"
         resources:
           requests:
-            storage: 10Gi
+            storage: {{ .Values.mongo.resources.requests.storage }}

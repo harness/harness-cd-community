@@ -52,3 +52,10 @@ spec:
         - name: http-log-svc
           containerPort: 8079
           protocol: "TCP"    
+        resources:
+          limits:
+            memory: {{ .Values.log_service.resources.limits.memory }}
+            cpu: {{ .Values.log_service.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.log_service.resources.requests.memory }}
+            cpu: {{ .Values.log_service.resources.requests.cpu }}

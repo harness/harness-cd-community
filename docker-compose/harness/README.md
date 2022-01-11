@@ -60,7 +60,7 @@ docker-compose down -v
    ```
 2) Re-run docker compose
    ```shell
-   docker compose up -d
+   docker-compose up -d
    ```
 
 ## Advanced Configuration
@@ -72,10 +72,3 @@ You simply need to set the `HARNESS_HOST` environment variable, see [Set hostnam
    ```shell
    export HARNESS_HOST="192.168.0.1"
    ```
-
-## Airgapped installation
-The above scripts will require connectivity to Dockerhub. In case connectivity to Dockerhub is not available, you can follow the steps as below
-1) Use the script *download_images.sh* to download the docker images. 
-2) You can then tar this entire folder and copy it to the target VM
-3) Use the script *unpack_images.sh* to load the images onto the VM. 
-4) Use the *start.sh* script to start Harness.
