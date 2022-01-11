@@ -174,7 +174,7 @@ mongo:
   resources:
     limits:
       memory: 768Mi
-      cpu: 200m
+      cpu: 500m
     requests:
       memory: 512Mi
       cpu: 200m

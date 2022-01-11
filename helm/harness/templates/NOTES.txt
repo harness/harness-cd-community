@@ -1,7 +1,7 @@
 1. To access the application run these commands:
 
    a. Wait for manager to start
-        kubectl wait --namespace {{ .Release.Namespace }} --timeout 900s --selector app=ng-manager --for condition=Ready pods
+        kubectl wait --namespace {{ .Release.Namespace }} --timeout 900s --selector app=proxy --for condition=Ready pods
 
    b. Forward port to allow access from outside the cluster
         kubectl port-forward --namespace {{ .Release.Namespace }} --address {{ .Values.harness_host | default "localhost" }} svc/proxy {{ .Values.listen_port }}:80 9879:9879
