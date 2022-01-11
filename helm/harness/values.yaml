@@ -4,7 +4,7 @@ listen_port: "7143"
 versions:
   busybox: 1.33.1
   log_service: release-18
-  manager: 73232
+  manager: 73233
   mongo: 4.2.8
   ng_auth_ui: 0.30.0
   ng_ui: 0.280.15
