@@ -169,5 +169,5 @@ mongo:
     requests:
       memory: 320Mi
       cpu: 200m
-      storage: 10Gi
+      storage: 2Gi
       wiredTigerCacheSize: 0.125
