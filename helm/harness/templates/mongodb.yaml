@@ -1,9 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: mongodb-replicaset-chart-mongodb
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-mongodb
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   mongod.conf: |
     {}
@@ -12,9 +15,12 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: mongodb-replicaset-chart-init
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-init
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   on-start.sh: |
     #!/usr/bin/env bash
@@ -247,9 +253,12 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
+  name: mongodb-replicaset-chart-admin
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-admin
+    {{- include "harness.secret.labels" . | nindent 4 }}
 type: Opaque
 data:
   user: YWRtaW4=
@@ -259,9 +268,12 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
+  name: mongodb-replicaset-chart-keyfile
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-keyfile
+    {{- include "harness.secret.labels" . | nindent 4 }}
 type: Opaque
 data:
   key.txt: dDhCNE9MM3Q0eWRXTUVVaHhvUk4=
@@ -272,8 +284,10 @@ kind: Service
 metadata:
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+    {{- toYaml .Values.service.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
+    {{- include "harness.service.labels" . | nindent 4 }}
   name: mongodb-replicaset-chart
 spec:
   type: ClusterIP
@@ -289,10 +303,12 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
+  name: mongodb-replicaset-chart
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  annotations:
-  name: mongodb-replicaset-chart
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
@@ -301,13 +317,13 @@ spec:
   replicas: 1
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: mongodb-replicaset
-      annotations:
-        checksum/config: fca3516170d327de50810cf50494e20bed3e41732799a291de1d1563b1a247cf
-        backup.velero.io/backup-volumes: datadir       
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       securityContext:
         runAsUser: 999
         fsGroup: 999

@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   AUDIT_ENABLED: 'false'
   CACHE_BACKEND: REDIS
@@ -61,6 +65,10 @@ kind: Secret
 type: Opaque
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.secret.labels" . | nindent 4 }}
 stringData:
   MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/ng-harness?authSource=admin'
   PMS_MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/pms-harness?authSource=admin'
@@ -72,6 +80,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.service.labels" . | nindent 4 }}
 spec:
   ports:
   - name: http-ng-manager
@@ -89,18 +101,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: ng-manager
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: ng-manager
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: ng-manager
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       initContainers:
         - name: check-for-pms
           image: harness/nginx:{{ .Values.versions.nginx }}

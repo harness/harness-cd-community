@@ -12,6 +12,48 @@ versions:
   redis: 6.2.5-alpine
   scm: release-27
 
+# Add custom annotations/labels for deployments
+deployment:
+  annotations:
+    # name: value
+  labels:
+    # name: value
+
+# Add custom annotations/labels for pods/replicas
+replica:
+  annotations:
+    # name: value
+  labels:
+    # name: value
+
+# Add custom annotations/labels for pods/replicas
+service:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
+# Add custom annotations/labels for service accounts
+serviceAccount:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
+# Add custom annotations/labels for config maps
+configMap:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
+# Add custom annotations/labels for secrets
+secret:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
 ng_ui:
   resources:
     limits:
@@ -123,9 +165,9 @@ mongo:
   resources:
     limits:
       memory: 320Mi
-      cpu: 200m
+      cpu: 500m
     requests:
       memory: 320Mi
       cpu: 200m
-      storage: 10Gi
+      storage: 2Gi
       wiredTigerCacheSize: 0.125

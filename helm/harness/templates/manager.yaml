@@ -2,6 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: manager
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.service.labels" . | nindent 4 }}
 spec:
   ports:
     - name: manager-http
@@ -16,7 +20,14 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: harness-default
+  name: {{ include "harness.serviceAccountName" }}
+  annotations:
+    {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.labels" . | nindent 4 }}
+    {{- if .Values.serviceAccount.labels }}
+      {{- toYaml .Values.serviceAccount.labels | nindent 4 }}
+    {{- end }}
 
 ---
 
@@ -24,6 +35,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: manager-config
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   ALLOWED_ORIGINS: http://proxy
   API_URL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}
@@ -94,6 +109,10 @@ kind: Secret
 type: Opaque
 metadata:
   name: manager-config
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.secret.labels" . | nindent 4 }}
 stringData:
   MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/harness?authSource=admin'
 
@@ -103,16 +122,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: manager
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: manager
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: manager
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       initContainers:
         - name: check-for-mongo
           image: harness/mongo:{{ .Values.versions.mongo }}

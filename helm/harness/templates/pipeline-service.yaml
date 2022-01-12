@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pipeline-service
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   ADVISE_EVENT_CONSUMER_THREAD_COUNT: '{{ .Values.pipeline.config.advise_event_consumer_thread_count | default "1" }}'
   AUTH_ENABLED: 'true'
@@ -83,6 +87,10 @@ kind: Secret
 type: Opaque
 metadata:
   name: pipeline-service
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.secret.labels" . | nindent 4 }}
 stringData:
   MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/pms-harness?authSource=admin'
   NOTIFICATION_MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/notifications?authSource=admin'
@@ -93,6 +101,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pipeline-service
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.service.labels" . | nindent 4 }}
 spec:
   ports:
   - name: pms-grpc
@@ -110,18 +122,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline-service
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: pipeline-service
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: pipeline-service
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: pipeline-service
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       initContainers:
         - name: check-for-mongo
           image: harness/mongo:{{ .Values.versions.mongo }}

@@ -51,12 +51,58 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Deployment labels
+*/}}
+{{- define "harness.deployment.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.deployment.labels }}
+{{ toYaml .Values.deployment.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Replica/Pods labels
+*/}}
+{{- define "harness.replica.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.replica.labels }}
+{{ toYaml .Values.replica.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Service labels
+*/}}
+{{- define "harness.service.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.service.labels }}
+{{ toYaml .Values.service.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+ConfigMap labels
+*/}}
+{{- define "harness.configMap.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.configMap.labels }}
+{{ toYaml .Values.configMap.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Secret labels
+*/}}
+{{- define "harness.secret.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.secret.labels }}
+{{ toYaml .Values.secret.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "harness.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "harness.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+{{- default "harness-default" .Values.serviceAccount.name }}
 {{- end }}
