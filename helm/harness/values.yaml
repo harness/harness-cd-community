@@ -26,6 +26,13 @@ replica:
   labels:
     # name: value
 
+# Add custom annotations/labels for pods/replicas
+service:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
 ng_ui:
   resources:
     limits:

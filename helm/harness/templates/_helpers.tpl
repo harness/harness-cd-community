@@ -71,6 +71,16 @@ Replica/Pods labels
 {{- end }}
 
 {{/*
+Service labels
+*/}}
+{{- define "harness.service.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.service.labels }}
+{{ toYaml .Values.service.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "harness.serviceAccountName" -}}

@@ -272,8 +272,10 @@ kind: Service
 metadata:
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+    {{- toYaml .Values.service.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
+    {{- include "harness.service.labels" . | nindent 4 }}
   name: mongodb-replicaset-chart
 spec:
   type: ClusterIP

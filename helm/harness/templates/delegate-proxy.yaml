@@ -39,6 +39,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: delegate-proxy
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.service.labels" . | nindent 4 }}
 spec:
   selector:
     app: delegate-proxy

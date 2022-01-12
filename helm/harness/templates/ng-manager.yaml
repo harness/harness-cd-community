@@ -72,6 +72,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.service.labels" . | nindent 4 }}
 spec:
   ports:
   - name: http-ng-manager
