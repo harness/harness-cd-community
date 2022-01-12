@@ -33,6 +33,13 @@ service:
   labels:
   # name: value
 
+# Add custom annotations/labels for service accounts
+serviceAccount:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
 ng_ui:
   resources:
     limits:

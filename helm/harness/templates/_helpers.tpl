@@ -84,9 +84,5 @@ Service labels
 Create the name of the service account to use
 */}}
 {{- define "harness.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "harness.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+{{- default "harness-default" .Values.serviceAccount.name }}
 {{- end }}

@@ -35,7 +35,7 @@ spec:
         app: scm
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       containers:
       - name: scm
         image: harness/ci-scm-signed:{{ .Values.versions.scm }}

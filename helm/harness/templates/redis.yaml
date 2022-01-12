@@ -48,7 +48,7 @@ spec:
         app: redis
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       securityContext:
         fsGroup: 1000
         runAsNonRoot: true

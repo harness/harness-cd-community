@@ -36,7 +36,7 @@ spec:
         app: log-service
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       containers:
       - name: log-service
         image:  harness/log-service-signed:{{ .Values.versions.log_service }}

@@ -47,7 +47,7 @@ spec:
         app: ng-ui
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       containers:
       - name: ng-ui
         image: harness/nextgenui-signed:{{ .Values.versions.ng_ui }}

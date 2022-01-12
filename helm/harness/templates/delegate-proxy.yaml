@@ -18,7 +18,7 @@ spec:
         app: delegate-proxy
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: harness-default
+      serviceAccountName: {{ include "harness.serviceAccountName" }}
       securityContext:
         runAsUser: 101
       containers:
