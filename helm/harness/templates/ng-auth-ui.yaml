@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ng-auth-ui
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   DEPLOYMENT_TYPE: COMMUNITY
 

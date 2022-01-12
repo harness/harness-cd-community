@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ng-ui
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: 'true'
 

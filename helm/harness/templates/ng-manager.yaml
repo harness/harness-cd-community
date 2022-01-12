@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   AUDIT_ENABLED: 'false'
   CACHE_BACKEND: REDIS
@@ -61,6 +65,10 @@ kind: Secret
 type: Opaque
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.secret.labels" . | nindent 4 }}
 stringData:
   MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/ng-harness?authSource=admin'
   PMS_MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/pms-harness?authSource=admin'

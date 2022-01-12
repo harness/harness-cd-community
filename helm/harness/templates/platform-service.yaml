@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: platform-service
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   AUDIT_CLIENT_BASEURL: http://proxy/audit/api/
   AUDIT_ENABLED: 'false'
@@ -42,6 +46,10 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: platform-service
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.secret.labels" . | nindent 4 }}
 stringData:
   MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/notifications?authSource=admin'
   AUDIT_MONGO_URI: 'mongodb://admin:dOkcGof8zL@mongodb-replicaset-chart.{{ .Release.Namespace }}.svc/audits?authSource=admin'

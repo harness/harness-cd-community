@@ -40,6 +40,20 @@ serviceAccount:
   labels:
   # name: value
 
+# Add custom annotations/labels for config maps
+configMap:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
+# Add custom annotations/labels for secrets
+secret:
+  annotations:
+  # name: value
+  labels:
+  # name: value
+
 ng_ui:
   resources:
     limits:

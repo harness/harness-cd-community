@@ -1,9 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: mongodb-replicaset-chart-mongodb
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-mongodb
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   mongod.conf: |
     {}
@@ -12,9 +15,12 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: mongodb-replicaset-chart-init
+  annotations:
+    {{- toYaml .Values.configMap.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-init
+    {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   on-start.sh: |
     #!/usr/bin/env bash
@@ -247,9 +253,12 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
+  name: mongodb-replicaset-chart-admin
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-admin
+    {{- include "harness.secret.labels" . | nindent 4 }}
 type: Opaque
 data:
   user: YWRtaW4=
@@ -259,9 +268,12 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
+  name: mongodb-replicaset-chart-keyfile
+  annotations:
+    {{- toYaml .Values.secret.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  name: mongodb-replicaset-chart-keyfile
+    {{- include "harness.secret.labels" . | nindent 4 }}
 type: Opaque
 data:
   key.txt: dDhCNE9MM3Q0eWRXTUVVaHhvUk4=

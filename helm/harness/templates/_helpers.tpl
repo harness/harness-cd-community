@@ -81,6 +81,26 @@ Service labels
 {{- end }}
 
 {{/*
+ConfigMap labels
+*/}}
+{{- define "harness.configMap.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.configMap.labels }}
+{{ toYaml .Values.configMap.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Secret labels
+*/}}
+{{- define "harness.secret.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.secret.labels }}
+{{ toYaml .Values.secret.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "harness.serviceAccountName" -}}
