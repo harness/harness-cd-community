@@ -27,16 +27,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ng-auth-ui
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: ng-auth-ui
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: ng-auth-ui
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: ng-auth-ui
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       containers:

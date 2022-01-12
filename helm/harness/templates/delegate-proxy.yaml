@@ -2,14 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: delegate-proxy
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
+  labels:
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: delegate-proxy
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: delegate-proxy
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       securityContext:

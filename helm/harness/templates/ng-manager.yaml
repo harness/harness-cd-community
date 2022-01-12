@@ -89,16 +89,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ng-manager
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: ng-manager
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: ng-manager
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: ng-manager
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       initContainers:

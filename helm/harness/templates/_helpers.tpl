@@ -51,6 +51,26 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Deployment labels
+*/}}
+{{- define "harness.deployment.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.deployment.labels }}
+{{ toYaml .Values.deployment.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
+Replica/Pods labels
+*/}}
+{{- define "harness.replica.labels" -}}
+{{ include "harness.labels" . }}
+{{- if .Values.replica.labels }}
+{{ toYaml .Values.replica.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "harness.serviceAccountName" -}}

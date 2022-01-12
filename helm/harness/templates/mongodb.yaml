@@ -289,10 +289,12 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
+  name: mongodb-replicaset-chart
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: mongodb-replicaset
-  annotations:
-  name: mongodb-replicaset-chart
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
@@ -301,11 +303,11 @@ spec:
   replicas: 1
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: mongodb-replicaset
-      annotations:
-        checksum/config: fca3516170d327de50810cf50494e20bed3e41732799a291de1d1563b1a247cf
-        backup.velero.io/backup-volumes: datadir       
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       securityContext:

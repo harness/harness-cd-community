@@ -12,6 +12,20 @@ versions:
   redis: 6.2.5-alpine
   scm: release-27
 
+# Add custom annotations/labels for deployments
+deployment:
+  annotations:
+    # name: value
+  labels:
+    # name: value
+
+# Add custom annotations/labels for pods/replicas
+replica:
+  annotations:
+    # name: value
+  labels:
+    # name: value
+
 ng_ui:
   resources:
     limits:

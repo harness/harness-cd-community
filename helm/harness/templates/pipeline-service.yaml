@@ -110,16 +110,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline-service
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: pipeline-service
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: pipeline-service
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: pipeline-service
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       initContainers:

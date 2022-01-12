@@ -28,16 +28,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
+  annotations:
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   labels:
     app: redis
+    {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
       app: redis
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.replica.annotations | nindent 8 }}
       labels:
         app: redis
+        {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: harness-default
       securityContext:
