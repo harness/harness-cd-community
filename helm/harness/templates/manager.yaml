@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "harness.serviceAccountName" }}
+  name: {{ include "harness.serviceAccountName" . }}
   annotations:
     {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
   labels:
@@ -138,7 +138,7 @@ spec:
         app: manager
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "harness.serviceAccountName" }}
+      serviceAccountName: {{ include "harness.serviceAccountName" . }}
       initContainers:
         - name: check-for-mongo
           image: harness/mongo:{{ .Values.versions.mongo }}

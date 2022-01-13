@@ -51,7 +51,7 @@ spec:
         app: ng-auth-ui
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "harness.serviceAccountName" }}
+      serviceAccountName: {{ include "harness.serviceAccountName" . }}
       containers:
       - name: ng-auth-ui
         image: harness/ng-auth-ui-signed:{{ .Values.versions.ng_auth_ui }}

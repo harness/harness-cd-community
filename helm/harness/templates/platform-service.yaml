@@ -96,7 +96,7 @@ spec:
         app: platform-service
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "harness.serviceAccountName" }}
+      serviceAccountName: {{ include "harness.serviceAccountName" . }}
       initContainers:
         - name: check-for-mongo
           image: harness/mongo:{{ .Values.versions.mongo }}
