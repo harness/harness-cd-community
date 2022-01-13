@@ -49,8 +49,13 @@ docker-compose down
 ```
 
 ## Remove Harness
+To uninstall your instance of Harness run
 ```shell
 docker-compose down -v
+```
+To remove all Harness docker images from your system run
+```shell
+docker images --filter=reference='harness/*' --quiet | xargs docker rmi
 ```
 
 ## Upgrading an existing Harness Installation
