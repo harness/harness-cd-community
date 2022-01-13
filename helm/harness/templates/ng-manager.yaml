@@ -118,7 +118,7 @@ spec:
         app: ng-manager
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "harness.serviceAccountName" }}
+      serviceAccountName: {{ include "harness.serviceAccountName" . }}
       initContainers:
         - name: check-for-pms
           image: harness/nginx:{{ .Values.versions.nginx }}

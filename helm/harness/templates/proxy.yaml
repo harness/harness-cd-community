@@ -222,7 +222,7 @@ spec:
         app: proxy
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "harness.serviceAccountName" }}
+      serviceAccountName: {{ include "harness.serviceAccountName" . }}
       initContainers:
         - name: check-for-manager
           image: harness/nginx:{{ .Values.versions.nginx }}
