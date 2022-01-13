@@ -30,10 +30,10 @@ This page contains the instructions necessary to run Harness CE using Helm on yo
    ```
 
 ## Using Harness
-1) Follow the notes printed by Helm to access the application
-1) Open the link which is displayed and complete the signup form
-1) You need to install a Harness delegate before you can run pipelines, see [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate)
-1) For help with getting started, read the Harness [documentation](https://ngdocs.harness.io/article/u8lgzsi7b3-quickstarts)
+1) Follow the notes printed by Helm to access the application.
+1) Open the link which is displayed and complete the signup form.
+1) You need to install a Harness delegate before you can run pipelines, see [Install a Kubernetes Delegate](https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate), [Install the Docker Delegate](https://ngdocs.harness.io/article/cya29w2b99-install-a-docker-delegate).
+1) For help with getting started, read the Harness [documentation](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart).
 
 ## Profiles
 Harness supports multiple hardware profiles the default profile being `laptop` for low resource environments
