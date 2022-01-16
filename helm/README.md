@@ -50,6 +50,4 @@ helm uninstall harness
 
 ## Advanced Configuration
 ### How to deploy the Harness Delegate to a separate environment
-You simply need to set the `harness_host` configuration parameter, see [Set hostname configuration parameter](#set-hostname-configuration-parameter) below.
-### Set hostname configuration parameter
-1) Set the `harness_host` configuration parameter, this should be the IP address or hostname of the machine where you are deploying Harness. You **cannot** use `localhost`. Open values.yaml in your editor and update the `harness_host` parameter.
+You simply need to set the `harness_host` configuration parameter. This should be the IP address or hostname of the machine where you are deploying Harness. You **cannot** use `localhost` for this parameter. Open values.yaml in your editor and update the `harness_host` parameter.
