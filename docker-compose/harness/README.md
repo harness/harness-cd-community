@@ -5,13 +5,13 @@ This page contains the instructions to run Harness CD Community Edition using Do
 1) Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) on your laptop or VM.
 
 ## Hardware requirements
-* 4 CPUs or more
-* 4GB of free memory
+* 2 CPUs or more
+* 3GB of free memory
 * 20GB of free disk space
 * Internet connection
 
 ## Start Harness CD
-1) Increase Docker Desktop memory to 4GB and CPU to 4. For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
+1) Increase Docker Desktop memory and CPU by the numbers listed above. For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
 2) Clone this repo.
    ```shell
    git clone https://github.com/harness/harness-cd-community.git
