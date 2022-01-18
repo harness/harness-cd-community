@@ -89,7 +89,7 @@ docker images --filter=reference='harness/*' --quiet | xargs docker rmi
    ```
 
 ## Advanced Configuration
-### How to deploy the Harness Delegate to a separate environment
+### How to deploy the Harness to a separate environment
 You simply need to set the `HARNESS_HOST` environment variable. This should be the IP address or hostname of the machine where you are deploying Harness. You cannot use **localhost** for this variable.  
    Example,
    ```shell
