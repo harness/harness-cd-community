@@ -11,7 +11,7 @@ This page contains the instructions to run Harness CD Community Edition using Do
 * Internet connection
 
 ## Start Harness CD
-1) Increase Docker Desktop memory to 4GB and CPU to 4. For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
+1) Increase Docker Desktop memory to 3GB and CPU to 2. For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
 2) Clone this repo.
    ```shell
    git clone https://github.com/harness/harness-cd-community.git
