@@ -44,6 +44,20 @@ kubectl get services -n harness
 2) Open the link which is displayed and complete the registration form at `<URL>/signup`. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at `<URL>/signin`.
 3) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
 
+## Troubleshooting
+If you run into issues when installing Harness this section will help identify where the issue is.
+##### View running processes
+```shell
+kubectl get pods -n harness
+```
+##### View logs of processes
+```shell
+kubectl logs -n harness -f <POD-NAME>
+```
+
+## Support
+[Join the Harness Community Forum](https://community.harness.io/)  
+[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
 
 ## Profiles
 Harness CD Community Edition supports multiple hardware profiles. The default profile is `laptop` for low resource environments. There is also a `production` profile available for use in more demanding environments.
