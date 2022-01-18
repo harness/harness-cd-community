@@ -11,7 +11,7 @@ This page contains the instructions to run Harness CD Community Edition using Do
 * Internet connection
 
 ## Start Harness CD
-1) Increase Docker Desktop memory and CPU by the numbers listed above. For Docker Desktop, see [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
+1) If you are running on Windows or Mac, increase Docker Desktop memory and CPU by the numbers listed above. See [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
 2) Clone this repo.
    ```shell
    git clone https://github.com/harness/harness-cd-community.git
@@ -31,6 +31,25 @@ This page contains the instructions to run Harness CD Community Edition using Do
 ## Use Harness CD
 1) Open http://localhost/#/signup and complete the registration form. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at http://localhost/#/signin
 2) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
+
+## Troubleshooting
+If you run into issues when installing Harness this section will help identify where the issue is.
+##### View running processes
+```shell
+docker-compose ps
+```
+##### View logs of processes
+```shell
+docker-compose logs -f <NAME>
+```
+For example,
+```shell
+docker-compose logs -f manager
+```
+
+## Support
+[Join the Harness Community Forum](https://community.harness.io/)  
+[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
 
 ## Profiles
 Harness CD Community Edition supports multiple hardware profiles. The default profile is `laptop` for low resource environments. There is also a `production` profile available for use in more demanding environments.
@@ -70,7 +89,7 @@ docker images --filter=reference='harness/*' --quiet | xargs docker rmi
    ```
 
 ## Advanced Configuration
-### How to deploy the Harness Delegate to a separate environment
+### How to deploy the Harness to a separate environment
 You simply need to set the `HARNESS_HOST` environment variable. This should be the IP address or hostname of the machine where you are deploying Harness. You cannot use **localhost** for this variable.  
    Example,
    ```shell
