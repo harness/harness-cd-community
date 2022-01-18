@@ -18,7 +18,7 @@ Harness CD is a modern self-service continuous delivery solution that allows dev
 
 ## What is Harness CD Community Edition?
 
-Harness CD Community Edition is a free and open edition of Harness CD that is designed for developers to deploy cloud-native services at the fastest velocity possible. Developers can self-host this edition on Docker or Kubernetes using a [docker-compose.yml](./docker-compose/harness/README.md) or a [helm-chart](./helm/README.md) respectively. This `harness-cd-community` repo houses these docker-compose and helm installers for Harness CD Community Edition while the `harness-core` and other public repos in this `harness` organization house the source code.
+Harness CD Community Edition is a free and open edition of Harness CD that is designed for developers to deploy cloud-native services at the fastest velocity possible. Developers can self-host this edition on Docker or Kubernetes using a [docker-compose.yml](./docker-compose/harness/) or a [helm-chart](./helm/) respectively. This `harness-cd-community` repo houses these docker-compose and helm installers for Harness CD Community Edition while the `harness-core` and other public repos in this `harness` organization house the source code.
 
 Harness CD is also available as a fully-managed SaaS solution in three different plans, namely Free, Team and Enterprise. For more details, see the [Harness CD Editions & Plans](https://harness.io/pricing/?module=cd) page.
 
@@ -30,7 +30,7 @@ Harness CD is also available as a fully-managed SaaS solution in three different
 ## Get Started with Harness CD Community Edition
 
 1. Install Harness CD Community Edition:  [using docker-compose](./docker-compose/harness/README.md) or [using helm chart](./helm/README.md).
-2. Create a [Kubernetes CD pipeline](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart#step_2_create_pipeline) and deploy a sample microservice into your local minikube or external Kubernetes cluster.
+2. Create a [Kubernetes CD pipeline](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart#step_2_create_pipeline) and deploy a sample nginx microservice into your local minikube or external Kubernetes cluster.
 3. Explore core features, such as [canary rollout](https://ngdocs.harness.io/article/i5p4feil89-create-a-kubernetes-canary-deployment), [automated infrastructure/Terraform provisioning](https://ngdocs.harness.io/article/boug6e884h-terraform-provisioning-with-harness), [pipeline-as-code](https://ngdocs.harness.io/article/1eishcolt3-harness-yaml-quickstart), [Git Experience](https://ngdocs.harness.io/article/dm69dkv34g-harness-git-experience-quickstart) and [built-in approvals](https://ngdocs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages).
 
 ## Get Started with Harness CD SaaS Plans

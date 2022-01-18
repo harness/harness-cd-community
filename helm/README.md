@@ -8,18 +8,18 @@ This page contains the instructions necessary to install and manage Harness CD C
 1) Install [Helm](https://helm.sh/docs/intro/quickstart/)
 
 ## Hardware requirements
-* 4 CPUs or more
-* 4GB of free memory
+* 2 CPUs or more
+* 3GB of free memory
 * 20GB of free disk space
 * Internet connection
 
 ## Start Harness CD
-1) Start by cloning this repo
+1) Start by cloning this repo.
    ```shell
    git clone https://github.com/harness/harness-cd-community.git
    cd harness-cd-community/helm
    ```
-1) Start minikube
+1) Start minikube with slightly higher memory and cpu so that you can also deploy a workload into the same Kubernetes cluster.
    ```shell
    minikube start --memory 4g --cpus 4
    ```
@@ -30,8 +30,18 @@ This page contains the instructions necessary to install and manage Harness CD C
    ```
 
 ## Use Harness CD
-1) Follow the notes printed by Helm to access the application.
-2) Open the link which is displayed and complete the registration form. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at `<URL>/signin`
+1) Follow the notes printed by Helm to access the application. 
+You should wait for the harness-cd application to start before moving to Step 2.
+```shell
+ kubectl wait --namespace harness --timeout 900s --selector app=proxy --for condition=Ready pods
+```
+
+You can also use the following commands to check status.
+```shell
+kubectl get pods -n harness
+kubectl get services -n harness
+```
+2) Open the link which is displayed and complete the registration form at `<URL>/signup`. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at `<URL>/signin`.
 3) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
 
 
@@ -45,7 +55,12 @@ helm install -f harness/values-production.yaml harness ./harness --create-namesp
 
 ## Remove Harness CD
 ```shell
-helm uninstall harness
+helm uninstall harness -n harness
+```
+
+You can even delete the harness namespace altogether.
+```shell
+kubectl delete namespace harness
 ```
 
 ## Advanced Configuration
