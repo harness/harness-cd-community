@@ -58,7 +58,7 @@ Harness CD Community Edition code is released under the source available [PolyFo
 
 When contributing to a Harness CD feature, you can find the relevant license in the comments at the top of each file.
 
-For more information, see the [Harness Loves Open Source page]().
+For more information, see the [Harness Loves Open Source page](https://harness.io/open-source/).
 
 ## Comparison with Other CD Tools
 
