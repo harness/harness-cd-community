@@ -47,9 +47,9 @@ For example,
 docker-compose logs -f manager
 ```
 
-## Support
-[Join the Harness Community Forum](https://community.harness.io/)  
+## Support 
 [Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
+[Join the Harness Community Forum](https://community.harness.io/) 
 
 ## Profiles
 Harness CD Community Edition supports multiple hardware profiles. The default profile is `laptop` for low resource environments. There is also a `production` profile available for use in more demanding environments.
