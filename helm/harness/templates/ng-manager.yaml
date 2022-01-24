@@ -22,6 +22,7 @@ data:
   EVENTS_FRAMEWORK_REDIS_URL: redis://redis:6379
   GIT_FULLSYNC_ENTITY_ITERATOR_THREAD_POOL_SIZE: '{{ .Values.ng_manager.config.git_fullsync_entity_iterator_thread_pool_size | default "2" }}'
   GRPC_SERVER_PORT: '9979'
+  HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: 'true'
   JAVA_ADVANCED_FLAGS: -XX:-TieredCompilation
   LICENSE_DEPLOY_VARIANT: COMMUNITY
   LOCK_CONFIG_REDIS_URL: redis://redis:6379

@@ -43,6 +43,7 @@ services:
       - API_URL=http://${HARNESS_HOST:-host.docker.internal}
       - DELEGATE_GRPC_TARGET=${HARNESS_HOST:-host.docker.internal}:9879
       - LOG_STREAMING_SERVICE_BASEURL=http://${HARNESS_HOST:-host.docker.internal}/log-service/
+      - UI_SERVER_URL=http://${HARNESS_HOST:-host.docker.internal}
     expose:
       - '9090'
       - '9879'
