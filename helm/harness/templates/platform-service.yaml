@@ -109,7 +109,7 @@ spec:
             runAsUser: 999
       containers:
       - name: platform-service
-        image: harness/platform-service-signed:{{ .Values.versions.manager }}
+        image: harness/platform-service-signed:{{ .Values.versions.platform_service }}
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsUser: 65534
