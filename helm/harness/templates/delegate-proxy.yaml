@@ -22,7 +22,7 @@ spec:
       securityContext:
         runAsUser: 101
       containers:
-        - image: harness/delegate-proxy-signed:{{ .Values.versions.manager }}
+        - image: harness/delegate-proxy-signed:{{ .Values.versions.delegate_proxy }}
           imagePullPolicy: IfNotPresent
           name: delegate-proxy
           resources:
