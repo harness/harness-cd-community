@@ -116,10 +116,10 @@ platform:
     memory: 60
   resources:
     limits:
-      memory: 244Mi
+      memory: 300Mi
       cpu: 1
     requests:
-      memory: 128Mi
+      memory: 300Mi
       cpu: 200m
 
 log_service:
@@ -134,10 +134,10 @@ log_service:
 scm:
   resources:
     limits:
-      memory: 48Mi
+      memory: 100Mi
       cpu: 200m
     requests:
-      memory: 48Mi
+      memory: 100Mi
       cpu: 200m
 
 delegate_proxy:
@@ -152,10 +152,10 @@ delegate_proxy:
 proxy:
   resources:
     limits:
-      memory: 16Mi
+      memory: 100Mi
       cpu: 200m
     requests:
-      memory: 16Mi
+      memory: 100Mi
       cpu: 200m
 
 redis:
