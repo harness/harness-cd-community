@@ -223,13 +223,6 @@ spec:
         {{- include "harness.replica.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "harness.serviceAccountName" . }}
-      initContainers:
-        - name: check-for-manager
-          image: harness/nginx:{{ .Values.versions.nginx }}
-          command: ['sh', '-c', "until curl -s http://ng-manager:7090/health; do echo waiting for ng-manager to start; sleep 2; done"]
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 101
       containers:
         - name: proxy
           image: harness/nginx:{{ .Values.versions.nginx }}

@@ -152,7 +152,7 @@ spec:
             runAsUser: 999
       containers:
       - name: pipeline-service
-        image: harness/pipeline-service-signed:{{ .Values.versions.manager }}
+        image: harness/pipeline-service-signed:{{ .Values.versions.pipeline_service }}
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsUser: 65534
