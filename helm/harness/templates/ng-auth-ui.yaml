@@ -57,7 +57,7 @@ spec:
         image: harness/ng-auth-ui-signed:{{ .Values.versions.ng_auth_ui }}
         imagePullPolicy: IfNotPresent
         securityContext:
-          runAsUser: 101
+          runAsUser: 65534
           runAsNonRoot: true
         readinessProbe:
           httpGet:

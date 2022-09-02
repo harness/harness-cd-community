@@ -63,19 +63,19 @@ versions:
 ng_ui:
   resources:
     limits:
-      memory: 16Mi
+      memory: 32Mi
       cpu: 200m
     requests:
-      memory: 16Mi
+      memory: 32Mi
       cpu: 200m
 
 ng_auth_ui:
   resources:
     limits:
-      memory: 12Mi
+      memory: 24Mi
       cpu: 200m
     requests:
-      memory: 12Mi
+      memory: 24Mi
       cpu: 200m
 
 manager:

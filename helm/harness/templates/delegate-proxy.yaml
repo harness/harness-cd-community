@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: {{ include "harness.serviceAccountName" . }}
       securityContext:
-        runAsUser: 101
+        runAsUser: 65534
       containers:
         - image: harness/delegate-proxy-signed:{{ .Values.versions.delegate_proxy }}
           imagePullPolicy: IfNotPresent
