@@ -1,7 +1,7 @@
 apiVersion: v2
 name: harness
 version: 0.1.0
-appVersion: "75281"
+appVersion: "76324"
 description: A Helm chart for Harness Community Edition.
 
 type: application
