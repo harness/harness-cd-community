@@ -112,7 +112,7 @@ services:
     expose:
       - '8079'
     healthcheck:
-      test: "curl -s http://localhost:8079/healthz"
+      test: "wget -q -O - http://localhost:8079/healthz"
     networks:
       harness-network:
 
