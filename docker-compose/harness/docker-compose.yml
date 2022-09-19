@@ -48,7 +48,7 @@ services:
       - '9090'
       - '9879'
     healthcheck:
-      test: "wget -q -O - http://localhost:9090/api/health"
+      test: "curl -s http://localhost:9090/api/health"
       start_period: 5m
     networks:
       harness-network:
@@ -64,7 +64,7 @@ services:
     expose:
       - '7090'
     healthcheck:
-      test: "wget -q -O - http://localhost:7090/health"
+      test: "curl -s http://localhost:7090/health"
       start_period: 5m
     networks:
       harness-network:
@@ -81,7 +81,7 @@ services:
       - '12011'
       - '14002'
     healthcheck:
-      test: "wget -q -O - http://localhost:12001/api/health"
+      test: "curl -s http://localhost:12001/api/health"
       start_period: 5m
     networks:
       harness-network:
@@ -96,7 +96,7 @@ services:
     expose:
       - '9005'
     healthcheck:
-      test: "wget -q -O - http://localhost:9005/api/health"
+      test: "curl -s http://localhost:9005/api/health"
       start_period: 5m
     networks:
       harness-network:
@@ -112,7 +112,7 @@ services:
     expose:
       - '8079'
     healthcheck:
-      test: "wget -q -O - http://localhost:8079/healthz"
+      test: "curl -s http://localhost:8079/healthz"
     networks:
       harness-network:
 
