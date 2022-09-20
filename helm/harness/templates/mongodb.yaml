@@ -429,22 +429,16 @@ spec:
             - --keyFile=/data/configdb/key.txt
             - --wiredTigerCacheSizeGB={{ .Values.mongo.resources.requests.wiredTigerCacheSize }}
           livenessProbe:
-            exec:
-              command:
-                - mongo
-                - --eval
-                - "db.adminCommand('ping')"
+            tcpSocket:
+              port: 27017
             initialDelaySeconds: 30
             timeoutSeconds: 5
             failureThreshold: 3
             periodSeconds: 10
             successThreshold: 1
           readinessProbe:
-            exec:
-              command:
-                - mongo
-                - --eval
-                - "db.adminCommand('ping')"
+            tcpSocket:
+              port: 27017
             initialDelaySeconds: 5
             timeoutSeconds: 1
             failureThreshold: 3
