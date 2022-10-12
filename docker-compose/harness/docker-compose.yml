@@ -74,7 +74,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 660m
+          memory: 1000m
     env_file: environment/pipeline-service.env
     expose:
       - '12001'
