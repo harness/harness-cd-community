@@ -56,7 +56,7 @@ versions:
   redis: 6.2.7-alpine
   scm: release-75-ubi
   platform_service: 77000
-  delegate_proxy: 76818_2
+  delegate_proxy: "76818_2"
   pipeline_service: 1.11.1
 
 # Resource request & limit configuration per application
