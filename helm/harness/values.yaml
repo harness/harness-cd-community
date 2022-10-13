@@ -105,7 +105,7 @@ pipeline:
     memory: 200
   resources:
     limits:
-      memory: 660Mi
+      memory: 1000Mi
       cpu: 1
     requests:
       memory: 512Mi
