@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   ng-ui:
-    image: harness/nextgenui-signed:0.318.6
+    image: harness/nextgenui-signed:0.323.9
     deploy:
       resources:
         limits:
@@ -17,7 +17,7 @@ services:
       harness-network:
 
   ng-auth-ui:
-    image: harness/ng-auth-ui-signed:0.42.0
+    image: harness/ng-auth-ui-signed:0.42.2
     deploy:
       resources:
         limits:
@@ -32,7 +32,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:76620
+    image: harness/manager-signed:77116
     deploy:
       resources:
         limits:
@@ -54,7 +54,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:76620
+    image: harness/ng-manager-signed:77116
     deploy:
       resources:
         limits:
@@ -70,11 +70,11 @@ services:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:1.6.0
+    image: harness/pipeline-service-signed:1.11.1
     deploy:
       resources:
         limits:
-          memory: 660m
+          memory: 1000m
     env_file: environment/pipeline-service.env
     expose:
       - '12001'
@@ -87,7 +87,7 @@ services:
       harness-network:
 
   platform-service:
-    image: harness/platform-service-signed:76600
+    image: harness/platform-service-signed:77201
     deploy:
       resources:
         limits:
@@ -117,7 +117,7 @@ services:
       harness-network:
 
   scm:
-    image: harness/ci-scm-signed:release-76-ubi
+    image: harness/ci-scm-signed:release-87-ubi
     deploy:
       resources:
         limits:
@@ -130,7 +130,7 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:76614
+    image: harness/delegate-proxy-signed:77021
     deploy:
       resources:
         limits:
