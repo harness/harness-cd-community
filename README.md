@@ -23,7 +23,7 @@ Harness CD Community Edition is a free and open edition of Harness CD that is de
 Harness CD is also available as a fully-managed SaaS solution in three different plans, namely Free, Team and Enterprise. For more details, see the [Harness CD Editions & Plans](https://harness.io/pricing/?module=cd) page.
 
 <p align="center">
-  <img src='./static/cd.svg' width='70%'>
+  <img src='./static/cd.svg' width='100%'>
 </p>
 
 
