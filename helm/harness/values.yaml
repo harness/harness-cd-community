@@ -113,7 +113,7 @@ pipeline:
 
 platform:
   config:
-    memory: 60
+    memory: 200
   resources:
     limits:
       memory: 300Mi
