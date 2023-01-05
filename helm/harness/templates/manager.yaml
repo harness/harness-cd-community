@@ -41,7 +41,11 @@ metadata:
     {{- include "harness.configMap.labels" . | nindent 4 }}
 data:
   ALLOWED_ORIGINS: http://proxy
-  API_URL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}
+  {{ if .Values.harness_host }}
+  API_URL: http://{{ .Values.harness_host }}:{{ .Values.listen_port }}
+  {{ else }}
+  API_URL: http://proxy
+  {{ end }}
   ARTIFACT_COLLECTION_ITERATOR_THREAD_COUNT: '2'
   ATMOSPHERE_BACKEND: REDIS
   BACKGROUND_SCHEDULER_CLUSTERED: 'true'
@@ -54,7 +58,7 @@ data:
   DELEGATE_CAPABILITIES_RECORD_ITERATOR_THREAD_COUNT: '{{ .Values.manager.config.delegate_capabilities_record_iterator_thread_count | default "2" }}'
   DELEGATE_DOCKER_IMAGE: harness/delegate:latest
   DELEGATE_GRPC_AUTHORITY: default-authority.harness.io
-  DELEGATE_GRPC_TARGET: {{ .Values.harness_host | default "host.docker.internal" }}:9879
+  DELEGATE_GRPC_TARGET: {{ .Values.harness_host | default "proxy" }}:9879
   DELEGATE_METADATA_URL: http://proxy/storage/wingsdelegates/delegateprod.txt
   DELEGATE_SERVICE_AUTHORITY: default-authority.harness.io
   DELEGATE_SERVICE_TARGET: manager:9879
@@ -84,7 +88,11 @@ data:
   LICENSE_INFO: trialLicense
   LOGGERS: org.reflections.Reflections=ERROR
   LOGGING_LEVEL: WARN
-  LOG_STREAMING_SERVICE_BASEURL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}/log-service/
+  {{ if .Values.harness_host }}
+  LOG_STREAMING_SERVICE_BASEURL: http://{{ .Values.harness_host }}:{{ .Values.listen_port }}/log-service/
+  {{ else }}
+  LOG_STREAMING_SERVICE_BASEURL: http://proxy/log-service/
+  {{ end }}
   LOG_STREAMING_SERVICE_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   MEMORY: '{{ .Values.manager.config.memory }}'
   NG_MANAGER_BASE_URL: http://proxy/ng/api/
@@ -101,7 +109,7 @@ data:
   SERVER_PORT: '9090'
   SERVICE_ACC: /opt/harness/svc/service_acc.json
   SETTING_ATTRIBUTE_VALIDATE_CONNECTIVITY_ITERATOR_THREAD_COUNT: '2'
-  UI_SERVER_URL: http://{{ .Values.harness_host | default "host.docker.internal" }}:{{ .Values.listen_port }}
+  UI_SERVER_URL: http://{{ .Values.harness_host | default "proxy" }}:{{ .Values.listen_port }}
   VAULT_SECRET_MANAGER_ITERATOR_THREAD_COUNT: '2'
   VERSION: 1.0.{{ .Values.versions.manager }}
   WATCHER_METADATA_URL: http://proxy/storage/wingswatchers/watcherprod.txt
