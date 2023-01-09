@@ -48,7 +48,7 @@ secret:
 versions:
   busybox: 1.35.0
   log_service: release-18
-  manager: 77629
+  manager: 77630
   mongo: 4.2.19
   ng_auth_ui: 0.45.0
   ng_ui: 0.331.16

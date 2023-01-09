@@ -32,7 +32,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:77629
+    image: harness/manager-signed:77630
     deploy:
       resources:
         limits:
@@ -54,7 +54,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:77629
+    image: harness/ng-manager-signed:77630
     deploy:
       resources:
         limits:
