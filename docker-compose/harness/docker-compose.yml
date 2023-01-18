@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   ng-ui:
-    image: harness/nextgenui-signed:0.323.9
+    image: harness/nextgenui-signed:0.331.16
     deploy:
       resources:
         limits:
@@ -17,7 +17,7 @@ services:
       harness-network:
 
   ng-auth-ui:
-    image: harness/ng-auth-ui-signed:0.42.2
+    image: harness/ng-auth-ui-signed:0.45.0
     deploy:
       resources:
         limits:
@@ -32,7 +32,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:77116
+    image: harness/manager-signed:77630
     deploy:
       resources:
         limits:
@@ -54,7 +54,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:77116
+    image: harness/ng-manager-signed:77630
     deploy:
       resources:
         limits:
@@ -70,7 +70,7 @@ services:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:1.11.1
+    image: harness/pipeline-service-signed:1.16.3
     deploy:
       resources:
         limits:
@@ -87,7 +87,7 @@ services:
       harness-network:
 
   platform-service:
-    image: harness/platform-service-signed:77201
+    image: harness/platform-service-signed:77502
     deploy:
       resources:
         limits:
@@ -117,7 +117,7 @@ services:
       harness-network:
 
   scm:
-    image: harness/ci-scm-signed:release-87-ubi
+    image: harness/ci-scm-signed:release-88-ubi
     deploy:
       resources:
         limits:
@@ -130,7 +130,7 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:77021
+    image: harness/delegate-proxy-signed:77629
     deploy:
       resources:
         limits:
