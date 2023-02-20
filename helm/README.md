@@ -27,8 +27,9 @@ This page contains the instructions necessary to install and manage Harness CD C
 1) Start Harness CD using the helm-chart
    ```shell
    helm install harness ./harness --create-namespace --namespace harness
-   ```
-
+   ```   
+1) You may observe a similar output 
+   ![output](../static/notes.png)
 ## Use Harness CD
 1) Follow the notes printed by Helm to access the application. 
 You should wait for the harness-cd application to start before moving to Step 2.
@@ -54,9 +55,42 @@ kubectl get pods -n harness
 ```shell
 kubectl logs -n harness -f <POD-NAME>
 ```
+---
+You may also run into a situation where the namespace `harness` is already present. 
+
+Check if namespace `harness` is already present 
+```shell 
+kubectl get namespaces
+```
+
+In that case you may delete the old namespace using - 
+
+```shell
+kubectl delete ns harness
+```
+and run the following installation again - 
+```shell 
+helm install harness ./harness --create-namespace --namespace harness
+```
+
+---
+
+In case the connection is refused, and you get a similar error message as mentioned below - 
+
+```
+The connection to the server 0.0.0.0:58909 was refused - did you specify the right host or port?
+```
+
+Make sure minikube is up and running through docker dashboard or using the following command
+```shell
+minikube status [flags]
+```
+
 
 ## Support  
-[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
+For any further blockers, doubts -  
+[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)  
+and    
 [Join the Harness Community Forum](https://community.harness.io/)
 
 ## Profiles
