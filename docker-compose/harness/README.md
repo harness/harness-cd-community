@@ -22,19 +22,16 @@ This page contains the instructions to run Harness CD Community Edition using Do
    ```shell
    docker-compose up -d
    ```
-   ![compose-up](../../static/compose-up.png)
    If this is your first time running the above command, then the docker images used in the docker-compose.yml file will now be pulled from DockerHub.
 5) Wait for startup to complete.
    ```shell
    docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180
    ```
-   ![compose-up](../../static/compose-run.png)
 
 6) Check if all the processes are up and in running state - 
    ```shell
    docker-compose ps
    ```
-   ![compose-up](../../static/compose-ps.png)
 
 
 ## Use Harness CD
@@ -55,18 +52,6 @@ For example,
 ```shell
 docker-compose logs -f manager
 ```
-
-You may also consider the following - 
-
-```shell 
-docker ps
-```
-
-#### View logs of processes
-```shell
-docker logs -f <CONTAINER ID>
-```
-
 
 
 ## Support 

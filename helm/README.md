@@ -28,8 +28,6 @@ This page contains the instructions necessary to install and manage Harness CD C
    ```shell
    helm install harness ./harness --create-namespace --namespace harness
    ```   
-1) You may observe a similar output 
-   ![output](../static/notes.png)
 ## Use Harness CD
 1) Follow the notes printed by Helm to access the application. 
 You should wait for the harness-cd application to start before moving to Step 2.
