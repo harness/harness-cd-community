@@ -28,6 +28,12 @@ This page contains the instructions to run Harness CD Community Edition using Do
    docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180
    ```
 
+6) Check if all the processes are up and in running state - 
+   ```shell
+   docker-compose ps
+   ```
+
+
 ## Use Harness CD
 1) Open http://localhost/#/signup and complete the registration form. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at http://localhost/#/signin
 2) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
@@ -46,6 +52,7 @@ For example,
 ```shell
 docker-compose logs -f manager
 ```
+
 
 ## Support 
 [Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
