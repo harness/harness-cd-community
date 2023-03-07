@@ -14,6 +14,9 @@ This page contains the instructions necessary to install and manage Harness CD C
 * Internet connection
 
 ## Start Harness CD
+
+[![Harness Community CD - Helm Installer](../../../static/helm-thumbnail.jpg)](https://youtu.be/o2Xz8A3RqO8 "Harness Community CD - Helm Installer") 
+
 1) Start by cloning this repo.
    ```shell
    git clone https://github.com/harness/harness-cd-community.git

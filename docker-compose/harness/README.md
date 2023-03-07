@@ -11,6 +11,9 @@ This page contains the instructions to run Harness CD Community Edition using Do
 * Internet connection
 
 ## Start Harness CD
+
+[![Harness Community CD - Docker Compose Installer](../../../static/docker-compose-thumbnail.jpg)](https://youtu.be/9geWy17iyrE "Harness Community CD - Docker Compose Installer")  
+
 1) If you are running on Windows or Mac, increase Docker Desktop memory and CPU by the numbers listed above. See [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
 2) Clone this repo.
    ```shell
