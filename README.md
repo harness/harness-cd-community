@@ -1,5 +1,5 @@
 <p align="center">
-  <img src='./static/logo_harness.svg' width='70%'>
+  <img src='./static/community_logo.svg' width='70%'>
 </p>
 
 ---
