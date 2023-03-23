@@ -91,10 +91,10 @@ manager:
 
 ng_manager:
   config:
-    memory: 232
+    memory: 296
   resources:
     limits:
-      memory: 752Mi
+      memory: 816Mi
       cpu: 1
     requests:
       memory: 512Mi
