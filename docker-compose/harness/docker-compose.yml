@@ -58,7 +58,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 752m
+          memory: 816m
     restart: on-failure
     env_file: environment/ng-manager.env
     expose:
