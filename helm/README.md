@@ -14,7 +14,7 @@ This page contains the instructions necessary to install and manage Harness CD C
 * Internet connection
 
 
-`Note: Extra resources would be required if minikube is running which is using the docker driver. We recommend using 6g memory and 4 CPUS`
+> Note: Extra resources would be required if minikube is running which is using the docker driver. We recommend using 6g memory and 4 CPUS
 
 
 [![Harness Community CD - Helm Installer](https://i.ytimg.com/vi/o2Xz8A3RqO8/hqdefault.jpg)](https://youtu.be/o2Xz8A3RqO8) 
