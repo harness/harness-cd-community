@@ -57,7 +57,7 @@ For example,
 docker-compose logs -f manager
 ```
 
-`Note : For 504 Gateway timeout -> make sure the ng-manager service is healthy. `
+> Note : For 504 Gateway timeout -> make sure the ng-manager service is healthy.
 
 
 ## Support 
