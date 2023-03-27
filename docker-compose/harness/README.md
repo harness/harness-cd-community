@@ -10,9 +10,11 @@ This page contains the instructions to run Harness CD Community Edition using Do
 * 20GB of free disk space
 * Internet connection
 
-## Start Harness CD
+`Note - Extra memory is required for delegate being setup using minikube which is using docker driver. We recommend using 6g memory and 4 CPUS`
 
-[![Harness Community CD - Docker Compose Installer](../../../static/docker-compose-thumbnail.jpg)](https://youtu.be/9geWy17iyrE "Harness Community CD - Docker Compose Installer")  
+[![Harness Community CD - Docker Installer](https://i.ytimg.com/vi/9geWy17iyrE/hqdefault.jpg)](https://youtu.be/9geWy17iyrE) 
+
+## Start Harness CD
 
 1) If you are running on Windows or Mac, increase Docker Desktop memory and CPU by the numbers listed above. See [Docker for Mac](https://docs.docker.com/docker-for-mac/#resources) or [Docker for Windows](https://docs.docker.com/docker-for-windows/#resources) for details on increasing resources.
 2) Clone this repo.
@@ -26,16 +28,15 @@ This page contains the instructions to run Harness CD Community Edition using Do
    docker-compose up -d
    ```
    If this is your first time running the above command, then the docker images used in the docker-compose.yml file will now be pulled from DockerHub.
-5) Wait for startup to complete.
-   ```shell
-   docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180
-   ```
 
-6) Check if all the processes are up and in running state - 
+5) Check status of all the processes using the command given below. Make sure all the services are up and healthy - 
    ```shell
    docker-compose ps
    ```
-
+6) Wait for startup to complete.
+   ```shell
+   docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180
+   ```
 
 ## Use Harness CD
 1) Open http://localhost/#/signup and complete the registration form. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at http://localhost/#/signin
@@ -55,6 +56,8 @@ For example,
 ```shell
 docker-compose logs -f manager
 ```
+
+`Note : For 504 Gateway timeout -> make sure the ng-manager service is healthy. `
 
 
 ## Support 
