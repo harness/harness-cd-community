@@ -10,7 +10,7 @@ This page contains the instructions to run Harness CD Community Edition using Do
 * 20GB of free disk space
 * Internet connection
 
-`Note - Extra memory is required for delegate being setup using minikube which is using docker driver. We recommend using 6g memory and 4 CPUS`
+> Note: Extra memory is required for delegate being setup using minikube which uses a docker driver. We recommend using 6g memory and 4 CPUS
 
 [![Harness Community CD - Docker Installer](https://i.ytimg.com/vi/9geWy17iyrE/hqdefault.jpg)](https://youtu.be/9geWy17iyrE) 
 
