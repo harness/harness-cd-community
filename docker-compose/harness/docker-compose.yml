@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   ng-ui:
-    image: harness/nextgenui-signed:0.339.20
+    image: harness/nextgenui-signed:0.344.19
     deploy:
       resources:
         limits:
@@ -17,7 +17,7 @@ services:
       harness-network:
 
   ng-auth-ui:
-    image: harness/ng-auth-ui-signed:1.3.3
+    image: harness/ng-auth-ui-signed:1.4.0
     deploy:
       resources:
         limits:
@@ -32,7 +32,7 @@ services:
       harness-network:
 
   manager:
-    image: harness/manager-signed:78425
+    image: harness/manager-signed:78927
     deploy:
       resources:
         limits:
@@ -54,7 +54,7 @@ services:
       harness-network:
 
   ng-manager:
-    image: harness/ng-manager-signed:78425
+    image: harness/ng-manager-signed:78927
     deploy:
       resources:
         limits:
@@ -70,7 +70,7 @@ services:
       harness-network:
 
   pipeline-service:
-    image: harness/pipeline-service-signed:1.21.13
+    image: harness/pipeline-service-signed:1.26.9
     deploy:
       resources:
         limits:
@@ -87,7 +87,7 @@ services:
       harness-network:
 
   platform-service:
-    image: harness/platform-service-signed:78202
+    image: harness/platform-service-signed:78602
     deploy:
       resources:
         limits:
@@ -102,7 +102,7 @@ services:
       harness-network:
 
   log-service:
-    image: harness/log-service-signed:release-18
+    image: harness/log-service-signed:release-61-ubi
     deploy:
       resources:
         limits:
@@ -130,7 +130,7 @@ services:
       harness-network:
 
   delegate-proxy:
-    image: harness/delegate-proxy-signed:78111
+    image: harness/delegate-proxy-signed:78904
     deploy:
       resources:
         limits:
@@ -181,7 +181,7 @@ services:
       harness-network:
 
   mongo:
-    image: harness/mongo:4.2.19
+    image: harness/mongo:4.4.19
     deploy:
       resources:
         limits:
