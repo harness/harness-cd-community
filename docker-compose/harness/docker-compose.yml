@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   ng-ui:
-    image: harness/nextgenui-signed:0.344.19
+    image: harness/nextgenui-signed:0.344.20
     deploy:
       resources:
         limits:
