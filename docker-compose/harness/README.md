@@ -2,7 +2,9 @@
 This page contains the instructions to run Harness CD Community Edition using Docker Compose.  The steps below use Docker Desktop for simplicity but can be used on any VM running docker and docker-compose.
 
 ## Pre-requisites
-1) Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) on your laptop or VM.
+1) Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) on your laptop or VM.  
+
+> Note: Docker Desktop for Mac supports both Apple Silicon & Intel Chip Docker Containers. In case you are working with **Apple Silicon Chip**, the official docker docs suggests to [install rosetta](https://docs.docker.com/desktop/install/mac-install/#mac-with-apple-silicon).
 
 ## Hardware requirements
 * 2 CPUs or more
@@ -23,6 +25,7 @@ This page contains the instructions to run Harness CD Community Edition using Do
    cd harness-cd-community/docker-compose/harness
    ```
 3) If you are running Docker Desktop on Windows or Mac skip this step. If you are running on Linux or wish to run a production install then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
+
 4) Start Harness CD.
    ```shell
    docker-compose up -d
