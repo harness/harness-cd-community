@@ -13,9 +13,15 @@ This page contains the instructions necessary to install and manage Harness CD C
 * 20GB of free disk space
 * Internet connection
 
+
+> Note: Extra resources would be required if minikube is running which is using the docker driver. We recommend using 6g memory and 4 CPUS
+
+
+[![Harness Community CD - Helm Installer](https://i.ytimg.com/vi/o2Xz8A3RqO8/hqdefault.jpg)](https://youtu.be/o2Xz8A3RqO8) 
+
+
 ## Start Harness CD
 
-[![Harness Community CD - Helm Installer](../../../static/helm-thumbnail.jpg)](https://youtu.be/o2Xz8A3RqO8 "Harness Community CD - Helm Installer") 
 
 1) Start by cloning this repo.
    ```shell
@@ -24,7 +30,7 @@ This page contains the instructions necessary to install and manage Harness CD C
    ```
 1) Start minikube with slightly higher memory and cpu so that you can also deploy a workload into the same Kubernetes cluster.
    ```shell
-   minikube start --memory 4g --cpus 4
+   minikube start --memory 6g --cpus 4
    ```
 1) If you are running Docker Desktop on Windows or Mac skip this step. If you are running on Linux or wish to run a production install then please see [Advanced Configuration](#advanced-configuration) to set the hostname of your machine.
 1) Start Harness CD using the helm-chart
@@ -43,7 +49,7 @@ You can also use the following commands to check status.
 kubectl get pods -n harness
 kubectl get services -n harness
 ```
-2) Open the link which is displayed and complete the registration form at `<URL>/signup`. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at `<URL>/signin`.
+2) Open the link which is displayed and complete the registration form at `http://<ip-address>:7143/#/signup`. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at `http://<ip-address>:7143/#/signin`.
 3) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
 
 ## Troubleshooting

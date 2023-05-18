@@ -31,7 +31,7 @@ Harness CD is also available as a fully-managed SaaS solution in three different
 
 1. Install Harness CD Community Edition:  [using docker-compose](./docker-compose/harness/README.md) or [using helm chart](./helm/README.md).
 2. Create a [Kubernetes CD pipeline](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart#step_2_create_pipeline) and deploy a sample nginx microservice into your local minikube or external Kubernetes cluster.
-3. Explore core features, such as [canary rollout](https://ngdocs.harness.io/article/i5p4feil89-create-a-kubernetes-canary-deployment), [automated infrastructure/Terraform provisioning](https://ngdocs.harness.io/article/boug6e884h-terraform-provisioning-with-harness), [pipeline-as-code](https://ngdocs.harness.io/article/1eishcolt3-harness-yaml-quickstart), [Git Experience](https://ngdocs.harness.io/article/dm69dkv34g-harness-git-experience-quickstart) and [built-in approvals](https://ngdocs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages).
+3. Explore core features, such as [canary rollout](https://ngdocs.harness.io/article/i5p4feil89-create-a-kubernetes-canary-deployment), [automated infrastructure/Terraform provisioning](https://ngdocs.harness.io/article/boug6e884h-terraform-provisioning-with-harness), [pipeline-as-code](https://ngdocs.harness.io/article/1eishcolt3-harness-yaml-quickstart), [Git Experience](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/) and [built-in approvals](https://ngdocs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages).
 
 ## Get Started with Harness CD SaaS Plans
 

@@ -47,17 +47,17 @@ secret:
 # Harness application versions
 versions:
   busybox: 1.35.0
-  log_service: release-18
-  manager: 78109
-  mongo: 4.2.19
-  ng_auth_ui: 0.45.0
-  ng_ui: 0.336.3
+  log_service: release-61-ubi
+  manager: 78927
+  mongo: 4.4.19
+  ng_auth_ui: 1.4.0
+  ng_ui: 0.344.19
   nginx: 1.21.4
   redis: 6.2.7-alpine
-  scm: release-88-ubi
-  platform_service: 77901
-  delegate_proxy: 78106
-  pipeline_service: 1.19.3
+  scm: release-114-ubi
+  platform_service: 78602
+  delegate_proxy: 78904
+  pipeline_service: 1.26.9
 
 # Resource request & limit configuration per application
 ng_ui:
@@ -91,10 +91,10 @@ manager:
 
 ng_manager:
   config:
-    memory: 232
+    memory: 296
   resources:
     limits:
-      memory: 752Mi
+      memory: 816Mi
       cpu: 1
     requests:
       memory: 512Mi
