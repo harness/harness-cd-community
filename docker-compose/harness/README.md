@@ -43,7 +43,7 @@ This page contains the instructions to run Harness CD Community Edition using Do
 
 ## Use Harness CD
 1) Open http://localhost/#/signup and complete the registration form. Now your Harness CD account along with the first (admin) user is created. If you have already completed this step, then login to Harness CD at http://localhost/#/signin
-2) Follow the Harness CD Community Edition [quickstart](https://ngdocs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart)
+2) Follow the Harness CD Community Edition [quickstart](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart/)
 
 ## Troubleshooting
 If you run into issues when installing Harness this section will help identify where the issue is.
@@ -64,8 +64,11 @@ docker-compose logs -f manager
 
 
 ## Support 
-[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)
-[Join the Harness Community Forum](https://community.harness.io/) 
+For any further blockers, doubts -  
+[Join the Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw)  
+and    
+[Join the Harness Community Forum](https://community.harness.io/)
+
 
 ## Profiles
 Harness CD Community Edition supports multiple hardware profiles. The default profile is `laptop` for low resource environments. There is also a `production` profile available for use in more demanding environments.
