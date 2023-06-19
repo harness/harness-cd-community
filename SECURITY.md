@@ -2,8 +2,12 @@
 
 ## Supported Versions
 
+
 | Version | Supported          |
 | ------- | ------------------ |
+| 792xx   | :white_check_mark: |
+| 789xx   | :white_check_mark: |
+| 784xx   | :white_check_mark: | 
 | 781xx   | :white_check_mark: |
 | 776xx   | :white_check_mark: |
 | 769xx   | :white_check_mark: |
