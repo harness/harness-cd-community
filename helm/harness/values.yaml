@@ -48,16 +48,16 @@ secret:
 versions:
   busybox: 1.35.0
   log_service: release-70-ubi
-  manager: 79228
+  manager: 79421
   mongo: 4.4.19
-  ng_auth_ui: 1.5.0
-  ng_ui: 0.347.19
+  ng_auth_ui: 1.7.0
+  ng_ui: 0.356.12
   nginx: 1.21.4
   redis: 6.2.7-alpine
-  scm: release-127-ubi
-  platform_service: 78903
-  delegate_proxy: 78918
-  pipeline_service: 1.29.10
+  scm: release-150-ubi
+  platform_service: 79202
+  delegate_proxy: 79310
+  pipeline_service: 1.33.8
 
 # Resource request & limit configuration per application
 ng_ui:
