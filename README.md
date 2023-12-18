@@ -43,7 +43,7 @@ For additional guidance on installation, usage, and administration, see our [Use
 
 ## Need Help?
 
-- [Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw) - Join the `#cd-community` slack channel to connect with our engineers and other users running Harness CD.
+- [Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g) - Join the `#cd-community` slack channel to connect with our engineers and other users running Harness CD.
 - [Harness Community Forum](https://community.harness.io/) - Ask questions, find answers, and help other users.
 - [Troubleshooting documentation](https://ngdocs.harness.io/article/jzklic4y2j-troubleshooting) - Learn how to troubleshoot common errors.
 - For filing bugs, suggesting improvements, or requesting new features, help us out by [opening an issue](https://github.com/harness/harness-cd-community/issues/new).
