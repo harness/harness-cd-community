@@ -1,6 +1,6 @@
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
-# As of Dec 2023, This Project is Deprecated
+# As of Dec 2023, This Repository is Archived
 This distribution is deprecated in favor of [Gitness](https://gitness.com/).
 Can read more about our decision [here](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness).
 
