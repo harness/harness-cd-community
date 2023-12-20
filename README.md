@@ -1,7 +1,7 @@
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 # As of Dec 2023, This Repository is Archived
-This distribution is deprecated in favor of [Gitness](https://gitness.com/).
+This distribution is retired in favor of [Gitness](https://gitness.com/).
 Can read more about our decision [here](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness).
 
 ---
@@ -81,4 +81,4 @@ To see how key features of Harness CD stack up against other CD tools, check out
 
 
 
-:warning: This project was deprecated in Dec 2023.
+:warning: This project was retired in Dec 2023.
