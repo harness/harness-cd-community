@@ -129,7 +129,7 @@ platform:
       cpu: 200m
 
 log_service:
-# log-service cannot run with multiple replicas.  It will fail to start.
+# log-service should not run with multiple replicas in community edition.
   resources:
     limits:
       memory: 72Mi
