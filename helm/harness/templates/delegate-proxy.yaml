@@ -7,6 +7,7 @@ metadata:
   labels:
     {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.delegate_proxy.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: delegate-proxy

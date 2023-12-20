@@ -316,7 +316,7 @@ spec:
     matchLabels:
       app: mongodb-replicaset
   serviceName: mongodb-replicaset-chart
-  replicas: 1
+  replicas: {{ .Values.mongo.replicaCount | default 1 }}
   template:
     metadata:
       annotations:

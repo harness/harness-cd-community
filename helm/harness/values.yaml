@@ -61,6 +61,7 @@ versions:
 
 # Resource request & limit configuration per application
 ng_ui:
+  replicaCount: 1
   resources:
     limits:
       memory: 32Mi
@@ -70,6 +71,7 @@ ng_ui:
       cpu: 200m
 
 ng_auth_ui:
+  replicaCount: 1
   resources:
     limits:
       memory: 24Mi
@@ -79,6 +81,7 @@ ng_auth_ui:
       cpu: 200m
 
 manager:
+  replicaCount: 1
   config:
     memory: 232
   resources:
@@ -90,6 +93,7 @@ manager:
       cpu: 200m
 
 ng_manager:
+  replicaCount: 1
   config:
     memory: 296
   resources:
@@ -101,6 +105,7 @@ ng_manager:
       cpu: 200m
 
 pipeline:
+  replicaCount: 1
   config:
     memory: 200
   resources:
@@ -112,6 +117,7 @@ pipeline:
       cpu: 200m
 
 platform:
+  replicaCount: 1
   config:
     memory: 200
   resources:
@@ -123,6 +129,7 @@ platform:
       cpu: 200m
 
 log_service:
+# log-service cannot run with multiple replicas.  It will fail to start.
   resources:
     limits:
       memory: 72Mi
@@ -132,6 +139,7 @@ log_service:
       cpu: 200m
 
 scm:
+  replicaCount: 1
   resources:
     limits:
       memory: 100Mi
@@ -141,6 +149,7 @@ scm:
       cpu: 200m
 
 delegate_proxy:
+  replicaCount: 1
   resources:
     limits:
       memory: 24Mi
@@ -150,6 +159,7 @@ delegate_proxy:
       cpu: 200m
 
 proxy:
+  replicaCount: 1
   resources:
     limits:
       memory: 100Mi
@@ -159,6 +169,7 @@ proxy:
       cpu: 200m
 
 redis:
+# Change Redis Uris if the replicaCount is increased.
   resources:
     limits:
       memory: 128Mi
@@ -168,6 +179,7 @@ redis:
       cpu: 200m
 
 mongo:
+# Change Mongo Uris if the replicaCount is increased.
   resources:
     limits:
       memory: 320Mi

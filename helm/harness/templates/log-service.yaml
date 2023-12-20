@@ -25,6 +25,7 @@ metadata:
     app: log-service
     {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.log_service.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: log-service

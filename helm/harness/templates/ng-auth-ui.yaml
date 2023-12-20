@@ -40,6 +40,7 @@ metadata:
     app: ng-auth-ui
     {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.ng_auth_ui.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: ng-auth-ui

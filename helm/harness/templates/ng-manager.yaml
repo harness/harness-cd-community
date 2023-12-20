@@ -108,6 +108,7 @@ metadata:
     app: ng-manager
     {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.ng_manager.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: ng-manager

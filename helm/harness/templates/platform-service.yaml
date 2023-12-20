@@ -85,6 +85,7 @@ metadata:
     app: platform-service
     {{- include "harness.deployment.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.platform.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: platform-service
