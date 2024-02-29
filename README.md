@@ -73,7 +73,7 @@ For more information, see the [Harness Loves Open Source page](https://harness.i
 
 To see how key features of Harness CD stack up against other CD tools, check out [Harness CD in Comparison](https://harness.io/learn/comparison-guide/).
 
-#### See Also
+#### See \
 
 - [Technical Resources](https://harness.io/learn/resource-center/) (by Harness engineers and customers!)
 - [Harness Software Delivery Platform Documentation](https://ngdocs.harness.io/)
